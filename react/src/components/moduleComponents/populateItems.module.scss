@@ -1,0 +1,55 @@
+@use './../../index.scss' as index;
+
+.populateItems {
+  max-height: 250px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: index.$quaternaryColor; // Card background
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; // Ensure rounded corners are respected
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    max-height: fit-content;
+  }
+
+  img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 0;
+  }
+
+  > div {
+    padding: 10px; // Add spacing inside text section
+
+    h4 {
+      font-size: 1rem;
+      color: index.$primaryFontColor;
+      font-family: index.$primaryFont;
+      margin: 0 0 6px 0;
+      text-align: center;
+    }
+
+    > p {
+      font-size: 0.8rem;
+      font-weight:lighter;
+      color: index.$primaryFontColor;
+      font-family: index.$primaryFont;
+
+      margin: 2px 0;
+      text-align: center;
+    }
+  }
+
+  
+}
+

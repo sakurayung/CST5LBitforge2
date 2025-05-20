@@ -1,0 +1,184 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.dashboard aside {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 25px 10px 10px;
+  min-height: 100%;
+  background-color: rgb(29, 58, 82);
+}
+.dashboard aside div {
+  padding: 5px 20px;
+  margin: 5px 0px;
+}
+.dashboard aside div a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: rgb(197, 195, 192);
+}
+.dashboard aside div:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dashboard .pfp {
+  padding: 10px;
+  background-color: rgb(20, 82, 133);
+}
+.dashboard .pfp .imagewrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  background-color: gray;
+}
+.dashboard .pfp .imagewrap img {
+  height: 200px;
+  width: 200px;
+}
+.dashboard > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.dashboard > div section {
+  overflow: auto;
+}
+.dashboard > div section .title {
+  display: flex;
+  background-color: rgb(197, 195, 192);
+  padding: 10px 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(23, 29, 37);
+}
+.dashboard > div section > div {
+  display: flex;
+}
+.dashboard > div section > .down {
+  display: flex;
+  flex-direction: row;
+}
+.dashboard > div section > .down .userDetails {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(31, 49, 80);
+  width: 100%;
+}
+.dashboard > div section > .down .userDetails > div {
+  display: flex;
+  flex-direction: row;
+}
+.dashboard > div section > .down .userDetails > div .dtl1 {
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 200px;
+  background-color: rgb(20, 82, 133);
+  color: rgb(23, 29, 37);
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: lighter;
+}
+.dashboard > div section > .down .userDetails > div .dtl2 {
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  color: rgb(53, 133, 207);
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: lighter;
+}
+.dashboard > div section > .down .userDetails > div .dtl2 button {
+  margin-left: 20px;
+  background-color: transparent;
+  border-style: none;
+  font-family: rgb(53, 133, 207);
+  color: rgb(53, 133, 207);
+  font-style: italic;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+.dashboard > div section > .down .userDetails > div .dtl2 button:hover {
+  color: rgb(218, 0, 174);
+}
+.dashboard > div section > .down .userDetails > div .dtaddresses {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  color: rgb(53, 133, 207);
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+}
+.dashboard > div section > .down .userDetails > div .dtaddresses > div {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.dashboard > div section > .down .userDetails > div .dtaddresses > div button {
+  margin-left: 20px;
+  background-color: transparent;
+  border-style: none;
+  font-family: rgb(53, 133, 207);
+  color: rgb(53, 133, 207);
+  font-style: italic;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+.dashboard > div section > .down .userDetails > div .dtaddresses > div button:hover {
+  color: rgb(218, 0, 174);
+}
+.dashboard > div section > .down .userDetails .userIDfield .dtl1, .dashboard > div section > .down .userDetails .userIDfield .dtl2 {
+  padding-top: 30px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+}
+.dashboard > div section > .down .userDetails2 {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  padding-left: 50px;
+  min-width: 300px;
+  background-color: rgb(31, 49, 80);
+}
+.dashboard > div section > .down .userDetails2 div {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  color: rgb(53, 133, 207);
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: lighter;
+}
+.dashboard > div section .cart {
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  background-color: rgb(23, 29, 37);
+}
+.dashboard > div section .purchase {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  background-color: rgb(23, 29, 37);
+}/*# sourceMappingURL=userDashboard.module.css.map */

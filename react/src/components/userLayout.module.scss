@@ -1,0 +1,121 @@
+@use '../index' as index;
+
+.mainwrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  background-color: index.$primaryColor;
+
+  header{
+    padding: 2px 50px;
+    width: auto;
+    background-color: index.$fifthColor;
+    
+    nav {
+      display: flex;
+      justify-content: space-between;  // Ensures that left and right content are spaced out
+      align-items: center;  // Centers the content vertically
+      width: 100%;  // Ensures nav takes full width of the header
+      height: 60px;  // Adjusted height for a more standard navigation bar
+
+      div{
+        display: flex;  // Both left and right containers will be flexboxes
+        align-items: center;  // Vertically center content
+        
+        a{
+          text-decoration: none;  // Remove the default underline from links
+          color: index.$primaryFontColor;  // Use primary color for the text
+          font-family: index.$primaryFont;  // Use the secondary font for the text
+          font-size: 0.875rem;  // Set font size
+          font-weight: bold;
+          padding: 0px 10px;
+          
+          &:hover{
+            color: index.$hoverprimaryFontColor;
+          }
+            
+        }
+      }
+
+      .leftnav {
+        justify-content: flex-start;  // Aligns children to the left
+        gap: 15px;  // Space out items in the leftnav if needed
+        
+        > h1 {
+          color: index.$primaryColor;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          font-size: 1.5rem;
+        } 
+      }
+
+      .rightnav {
+        justify-content: flex-end;  // Aligns children to the right
+        gap: 15px;  // Space out items in the rightnav if needed
+        
+        .searchtab {
+          display: flex;
+          background-color: index.$territaryColor;
+          border-radius: 25px;
+          padding: 10px 20px;
+
+          > input {
+            background-color: transparent;
+            border-style: none;
+            color: index.$primaryFontColor;
+            font-size: 0.875rem;
+            width: 250px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          > select {
+            background-color: transparent;
+            border-style: none;
+            color: index.$primaryFontColor;
+            margin-left: 10px; 
+
+            option {
+              background-color: index.$territaryColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .searchResultwrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: index.$primaryColor;
+    
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: right;
+      padding: 5px 100px;
+      background-color: index.$secondaryColor;
+      
+      select {
+        background-color: index.$territaryColor;
+        border-style: none;
+        padding: 3px 15px;
+        color: index.$primaryFontColor;
+        font-size: 0.875rem;
+        font-family: index.$territaryfont;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.purchaseswrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 30px 75px;
+  overflow-y: auto;
+  background-color: rgb(23, 29, 37);
+}
+.purchaseswrap ::-webkit-scrollbar {
+  display: none;
+}
+.purchaseswrap .purchaseDiv {
+  margin: 10px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+.purchaseswrap .purchaseDiv .updiv {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(31, 49, 80);
+  font-size: 0.75rem;
+}
+.purchaseswrap .purchaseDiv .updiv .leftdiv img {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv > div {
+  padding: 10px;
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv .up {
+  display: flex;
+  flex-direction: column;
+  color: rgb(53, 98, 139);
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv .up > div {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv .middle, .purchaseswrap .purchaseDiv .updiv .rightdiv .down {
+  color: rgb(197, 195, 192);
+  font-size: 0.8rem;
+}
+.purchaseswrap .purchaseDiv .updiv .rightdiv .middle > div, .purchaseswrap .purchaseDiv .updiv .rightdiv .down > div {
+  margin: 4px 0px;
+}
+.purchaseswrap .purchaseDiv .downdiv {
+  padding: 10px;
+  background-color: rgb(29, 58, 82);
+  color: rgb(197, 195, 192);
+}/*# sourceMappingURL=purchasedItems.module.css.map */

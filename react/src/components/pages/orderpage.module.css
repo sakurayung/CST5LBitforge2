@@ -1,0 +1,115 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: auto;
+  min-height: 100%;
+  width: 100;
+  background-color: rgb(23, 29, 37);
+}
+.order > div {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 25px 20px;
+  background-color: rgb(31, 49, 80);
+}
+.order > div form input {
+  color: rgb(23, 29, 37);
+}
+.order > div form h1 {
+  color: rgb(197, 195, 192);
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 10px;
+}
+.order > div form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0px;
+}
+.order > div form > div h4 {
+  color: rgb(53, 133, 207);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+}
+.order > div form > div > div {
+  margin: 5px 0px;
+  padding: 3px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+.order > div form > div > div input {
+  background-color: transparent;
+  border-style: none;
+  flex: 1;
+  width: 100%;
+}
+.order > div form > div > div input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.order > div form .addresswrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+.order > div form .addresswrap > div {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+}
+.order > div form .addresswrap > div > div h4, .order > div form .addresswrap > div > div > div {
+  margin: 5px;
+}
+.order > div form .addresswrap > div > div h4 {
+  padding: 3px;
+  min-width: 120px;
+}
+.order > div form .addresswrap > div > div > div {
+  padding: 3px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.order > div form .addresswrap > div .addressinputwrap {
+  width: 100%;
+}
+.order > div form .pricewrap p {
+  margin: 2px 0px;
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+  color: rgb(53, 133, 207);
+}
+.order > div form .button {
+  all: unset;
+  display: flex;
+  flex-grow: auto;
+  justify-content: end;
+  margin-top: 15px;
+  width: 100%;
+}
+.order > div form .button button {
+  padding: 5px 10px;
+  margin: 10px;
+  border-style: none;
+  border-radius: 4px;
+  background-color: rgb(20, 82, 133);
+  color: rgb(23, 29, 37);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+}/*# sourceMappingURL=orderpage.module.css.map */

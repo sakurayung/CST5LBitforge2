@@ -1,0 +1,53 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.usernav {
+  position: relative;
+  display: inline-block;
+}
+.usernav p {
+  color: rgb(197, 195, 192);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+.usernav .dropdowncontent {
+  display: none;
+}
+.usernav:hover .dropdowncontent {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(23, 29, 37);
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.627);
+  z-index: 10;
+}
+.usernav:hover .dropdowncontent button {
+  border-style: none;
+  background-color: transparent;
+  padding: 5px 15px;
+  margin-top: 10px;
+  color: rgb(197, 195, 192);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+.usernav:hover .dropdowncontent button:hover {
+  background-color: rgba(197, 195, 192, 0.5);
+  color: rgb(23, 29, 37);
+}/*# sourceMappingURL=dropdownUserProfileHeader.module.css.map */

@@ -1,0 +1,89 @@
+@use './../../index.scss' as index;
+
+.purchaseswrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 30px 75px;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  //::-webkit-scrollbar-thumb {
+  //  background-color: rgba(255, 255, 255, 0.3);
+  //}
+
+  background-color: index.$primaryColor;
+  
+  .purchaseDiv {
+    margin: 10px;
+    
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    font-family: index.$territaryfont;
+
+    .updiv {
+      display: flex;
+      flex-direction: row;
+      background-color: index.$territaryColor;
+      font-size: 0.75rem;
+
+      .leftdiv {
+        img {
+          height: 200px;
+          width: 200px;
+          margin: 10px;
+        }
+      }
+      
+      .rightdiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        > div {
+          padding: 10px;
+        }
+
+        .up {
+          display: flex;
+          flex-direction: column;
+          color: index.$fifthFontColor;
+
+          > div {
+            display: flex;
+            width: 100%;
+            justify-content: end;
+          }
+        }
+
+        .middle, .down {
+          color: index.$primaryFontColor;
+          font-size: 0.8rem;
+
+          > div {
+            margin: 4px 0px;
+          }
+        }
+      }
+
+    }
+
+    .downdiv {
+      padding: 10px;
+      background-color: index.$quaternaryColor;
+      color: index.$primaryFontColor;
+    }
+  }
+}
+
+.error {
+  color: index.$primaryFontColor;
+  font-family: index.$territaryfont;
+  font-size: 0.875rem;
+}

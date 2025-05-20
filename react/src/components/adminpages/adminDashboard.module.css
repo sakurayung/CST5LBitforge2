@@ -1,0 +1,83 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.dashboard aside {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 25px 10px 10px;
+  min-height: 100%;
+  background-color: rgb(29, 58, 82);
+}
+.dashboard aside div {
+  padding: 5px 20px;
+  margin: 5px 0px;
+}
+.dashboard aside div a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: rgb(197, 195, 192);
+}
+.dashboard aside div:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dashboard > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.dashboard > div section .title {
+  display: flex;
+  background-color: rgb(197, 195, 192);
+  padding: 10px 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(23, 29, 37);
+}
+.dashboard > div section > div {
+  display: flex;
+}
+.dashboard .items {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(23, 29, 37);
+}
+
+.detailswrap {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(31, 49, 80);
+}
+.detailswrap .overviewwrap {
+  display: flex;
+  flex-direction: row;
+  padding: 30px 100px;
+}
+.detailswrap .overviewwrap div {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: rgb(197, 195, 192);
+  font-size: 0.75rem;
+}
+.detailswrap .overviewwrap div p {
+  padding-bottom: 10px;
+}
+.detailswrap .overviewwrap .right {
+  padding-left: 100px;
+  border-left: 2px solid rgb(197, 195, 192);
+}/*# sourceMappingURL=adminDashboard.module.css.map */

@@ -1,0 +1,205 @@
+@use './../../index.scss' as index;
+
+.dashboard{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  
+  aside {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 25px 10px 10px;
+    min-height: 100%;
+    background-color: index.$quaternaryColor;
+
+    div {
+      padding: 5px 20px;
+      margin: 5px 0px;
+
+      a {
+        text-decoration: none;
+        font-family: index.$primaryFont;
+        font-weight: bold;
+        color: index.$primaryFontColor;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,0.5);
+      }
+    }
+  }
+
+  .pfp {
+    padding: 10px;
+    background-color: index.$fifthColor;
+
+    .imagewrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 200px;
+      background-color: gray;
+
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0; // Allow the main content to shrink if necessary
+
+    section {
+      overflow: auto; // Add scroll if content exceeds available space
+
+      .title {
+        display: flex;
+        background-color: index.$secondaryColor;
+        padding: 10px 100px;
+        font-family: index.$secondaryFont;
+        color: index.$secondaryFontColor;
+      }
+
+      > div {
+        display: flex;
+      }
+
+      > .down {
+        display: flex;
+        flex-direction: row;
+
+        .userDetails {
+          display: flex;
+          flex-direction: column;
+          background-color: index.$territaryColor;
+          width: 100%;
+          > div {
+            display: flex;
+            flex-direction: row;
+            
+            .dtl1 {
+              padding-left: 20px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              width: 200px;
+              background-color: index.$fifthColor;
+              color: index.$secondaryFontColor;
+              font-family: index.$territaryfont;
+              font-size: 0.875rem;
+              font-weight: lighter;
+            }
+
+            .dtl2 {
+              padding-left: 50px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              display: flex;
+              flex-direction: row;
+              color: index.$territaryFontColor;
+              font-family: index.$territaryfont;
+              font-size: 0.875rem;
+              font-weight: lighter;
+
+              button {
+                margin-left: 20px;
+                background-color: transparent;
+                border-style: none;
+                font-family: index.$territaryFontColor;
+                color: index.$territaryFontColor;
+                font-style: italic;
+                cursor: pointer;
+                font-size: 0.7rem;
+
+                &:hover {
+                  color: index.$quaternaryFontColor
+                }
+              }
+            }
+
+            .dtaddresses {
+              display: flex;
+              flex-direction: column;
+              padding-left: 50px;
+              padding-bottom: 50px;
+              color: index.$territaryFontColor;
+              font-family: index.$territaryfont;
+              font-size: 0.875rem;
+
+              > div {
+                display: flex;
+                flex-direction: row;
+                padding-top: 5px;
+                padding-bottom: 5px;
+
+                button {
+                  margin-left: 20px;
+                  background-color: transparent;
+                  border-style: none;
+                  font-family: index.$territaryFontColor;
+                  color: index.$territaryFontColor;
+                  font-style: italic;
+                  cursor: pointer;
+                  font-size: 0.7rem;
+
+                  &:hover {
+                    color: index.$quaternaryFontColor
+                  }
+                }
+              }
+            }
+          }
+          
+          .userIDfield {
+            .dtl1, .dtl2 {
+              padding-top: 30px;
+              font-weight: bold;
+              font-family: index.$territaryfont;
+              font-size: 0.875rem;
+            }
+          }
+        }
+
+        .userDetails2 {
+          display: flex;
+          flex-direction: column;
+          padding: 30px;
+          padding-left: 50px;
+          min-width: 300px;
+          background-color: index.$territaryColor;
+          
+          div {
+            display: flex;
+            width: 100%;
+            margin: 5px;
+            color: index.$territaryFontColor;
+            font-family: index.$territaryfont;
+            font-size: 0.875rem;
+            font-weight: lighter;
+
+          }
+        }
+      }
+      
+      .cart {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        background-color: index.$primaryColor;
+      }
+
+      .purchase {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        background-color: index.$primaryColor;
+      }
+
+    }
+
+  }
+}

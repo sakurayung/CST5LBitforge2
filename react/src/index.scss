@@ -1,0 +1,29 @@
+$primaryColor: rgb(23, 29, 37);
+$secondaryColor: rgb(197, 195, 192);
+$territaryColor: rgb(31, 49, 80);
+$quaternaryColor: rgb(29, 58, 82);
+$fifthColor: rgb(20, 82, 133); 
+
+$primaryFontColor: rgb(197, 195, 192);
+$hoverprimaryFontColor: rgba(197, 195, 192, 0.5);
+$secondaryFontColor: rgb(23, 29, 37);
+$territaryFontColor: rgb(53, 133, 207);
+$quaternaryFontColor: rgb(218, 0, 174);
+$fifthFontColor: rgb(53, 98, 139);
+
+$primaryFont: 'Montserrat', sans-serif;
+$secondaryFont: Verdana, Geneva, Tahoma, sans-serif;
+$territaryfont: Arial, sans-serif;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+

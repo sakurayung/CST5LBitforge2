@@ -1,0 +1,92 @@
+@use './../../index.scss' as index;
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  background-color: index.$primaryColor;
+
+  form {
+    padding: 25px;
+    background-color: index.$secondaryColor;
+
+    h1 {
+      font-family: index.$primaryFont;
+      color: index.$secondaryFontColor;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    // Username block with hover effect
+    .usernameBlock {
+      background-color: rgba(197, 195, 192, 0.31);
+      margin-bottom: 12px;
+      transition: background-color 0.3s;
+
+      label {
+        color: index.$secondaryFontColor;
+        display: block;
+        padding: 8px 0 4px;
+      }
+
+      .userLabel {
+        color: index.$territaryFontColor;
+      }
+
+      div {
+        input {
+          width: 100%;
+          padding: 8px;
+          background-color: transparent;
+          border: none;
+          font-family: index.$territaryfont;
+          color: index.$secondaryFontColor;
+        }
+      }
+
+      &:hover {
+        background-color: rgba(197, 195, 192, 0.75);
+
+        .userLabel {
+          color: index.$quaternaryFontColor;
+        }
+      }
+    }
+
+    // Generic input section (like password)
+    > div {
+      margin-bottom: 12px;
+
+      label {
+        color: index.$secondaryFontColor;
+        font-family: index.$secondaryFont;
+        display: block;
+        padding: 8px 0 4px;
+      }
+
+      div {
+        background-color: rgb(166, 164, 162);
+        input {
+          width: 250px;
+          padding: 8px;
+          background-color: transparent;
+          border: none;
+          font-family: index.$territaryfont;
+          color: index.$secondaryFontColor;
+        }
+      }
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: index.$territaryColor;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: index.$primaryFont;
+    }
+  }
+}

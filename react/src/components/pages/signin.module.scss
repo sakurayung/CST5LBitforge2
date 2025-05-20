@@ -1,0 +1,97 @@
+@use './../../index.scss' as index;
+
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  background-color: index.$primaryColor;
+
+  form {
+    padding: 25px;
+    background-color: index.$secondaryColor;
+    width: 300px;
+
+    h3 {
+      font-family: index.$primaryFont;
+      color: index.$secondaryFontColor;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    // All input groups default style
+    .inputGroup {
+      background-color: rgba(197, 195, 192, 0.31);
+      margin-bottom: 10px;
+      
+      label {
+        color: index.$secondaryFontColor;
+        font-family: index.$secondaryFont;
+        font-size: 0.875rem;
+      }
+
+      > div {
+        background-color: rgb(166, 164, 162);
+
+        input {
+          background-color: transparent;
+          border: none;
+          font-family: index.$territaryfont;
+          width: 100%;
+          padding: 8px 4px;
+          color: index.$secondaryFontColor;
+        }
+      }
+
+      &:hover {
+        background-color: rgba(197, 195, 192, 0.75);
+      }
+
+      .addresswrap{
+        background-color: index.$secondaryColor;
+        
+        div{
+          background-color: rgb(166, 164, 162);
+          display: inline-block;
+          min-width: 100px;
+          margin: 1px 4px 1px 0px;
+
+          input {
+            background-color: transparent;
+            border: none;
+            font-family: index.$territaryfont;
+            width: 100%;
+            padding: 8px 4px;
+            color: index.$secondaryFontColor;
+          }
+        }
+      }
+    }
+
+    // Username block with special label hover color
+    .usernameBlock {
+      @extend .inputGroup;
+
+      .userLabel {
+        color: index.$territaryFontColor;
+      }
+
+      &:hover {
+        .userLabel {
+          color: index.$quaternaryFontColor;
+        }
+      }
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: index.$quaternaryFontColor;
+      color: white;
+      border: none;
+      font-family: index.$primaryFont;
+      cursor: pointer;
+    }
+  }
+}

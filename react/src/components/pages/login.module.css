@@ -1,0 +1,86 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+}
+.login form {
+  padding: 25px;
+  background-color: rgb(197, 195, 192);
+}
+.login form h1 {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(23, 29, 37);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.login form .usernameBlock {
+  background-color: rgba(197, 195, 192, 0.31);
+  margin-bottom: 12px;
+  transition: background-color 0.3s;
+}
+.login form .usernameBlock label {
+  color: rgb(23, 29, 37);
+  display: block;
+  padding: 8px 0 4px;
+}
+.login form .usernameBlock .userLabel {
+  color: rgb(53, 133, 207);
+}
+.login form .usernameBlock div input {
+  width: 100%;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  font-family: Arial, sans-serif;
+  color: rgb(23, 29, 37);
+}
+.login form .usernameBlock:hover {
+  background-color: rgba(197, 195, 192, 0.75);
+}
+.login form .usernameBlock:hover .userLabel {
+  color: rgb(218, 0, 174);
+}
+.login form > div {
+  margin-bottom: 12px;
+}
+.login form > div label {
+  color: rgb(23, 29, 37);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: block;
+  padding: 8px 0 4px;
+}
+.login form > div div {
+  background-color: rgb(166, 164, 162);
+}
+.login form > div div input {
+  width: 250px;
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  font-family: Arial, sans-serif;
+  color: rgb(23, 29, 37);
+}
+.login form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgb(31, 49, 80);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}/*# sourceMappingURL=login.module.css.map */

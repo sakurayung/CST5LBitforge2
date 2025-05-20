@@ -1,0 +1,92 @@
+@use './../../index.scss' as index;
+
+.dashboard{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  
+  aside {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 25px 10px 10px;
+    min-height: 100%;
+    background-color: index.$quaternaryColor;
+
+    div {
+      padding: 5px 20px;
+      margin: 5px 0px;
+
+      a {
+        text-decoration: none;
+        font-family: index.$primaryFont;
+        font-weight: bold;
+        color: index.$primaryFontColor;
+      }
+
+      &:hover {
+        background-color: rgba(0,0,0,0.5);
+      }
+    }
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0; // Allow the main content to shrink if necessary
+    overflow-y: auto;
+
+    section {
+      //overflow: auto; // Add scroll if content exceeds available space
+
+      .title {
+        display: flex;
+        background-color: index.$secondaryColor;
+        padding: 10px 100px;
+        font-family: index.$secondaryFont;
+        color: index.$secondaryFontColor;
+      }
+
+      > div {
+        display: flex;
+      }
+
+    }
+
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    background-color: index.$primaryColor;
+  }
+}
+
+.detailswrap {
+  display: flex;
+  flex-direction: column;
+  background-color: index.$territaryColor;
+
+  .overviewwrap {
+    display: flex;
+    flex-direction: row;
+    padding: 30px 100px;
+
+    div {
+      width: 100%;
+      font-family: index.$territaryfont;
+      color: index.$primaryFontColor;
+      font-size: 0.75rem;
+
+      p {
+        padding-bottom: 10px;
+      }
+    }
+
+    .right {
+      padding-left: 100px;
+      border-left: 2px solid index.$secondaryColor;
+    }
+  }
+}
+

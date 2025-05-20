@@ -1,0 +1,53 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  padding: 0px 100px;
+  background-color: rgb(23, 29, 37);
+}
+.home section {
+  background-color: rgb(31, 49, 80);
+  min-height: 220px;
+  margin-bottom: 50px;
+}
+.home section > div {
+  padding: 10px 50px;
+  background-color: rgb(197, 195, 192);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.home section > div h3 {
+  color: rgb(23, 29, 37);
+}
+.home section .displayitemwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: rgb(23, 29, 37);
+  gap: 10px;
+  padding: 10px 50px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  text-decoration: none;
+}
+.home section .displayitemwrapper::-webkit-scrollbar-track {
+  background-color: rgb(31, 49, 80);
+}
+.home section .displayitemwrapper::-webkit-scrollbar-thumb {
+  background-color: rgb(29, 58, 82);
+}/*# sourceMappingURL=home.module.css.map */

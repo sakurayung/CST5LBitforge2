@@ -1,0 +1,125 @@
+@use './../../index.scss' as index;
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 50px 75px;
+  overflow-y: auto;
+  background-color: index.$primaryColor;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    > div {
+      > div {
+        padding: 10px;
+      }
+    }
+
+    .upper{
+      display: flex;
+      flex-direction: row;
+      background-color: index.$territaryColor;
+
+      button {
+        height: min-content;
+        width: min-content;
+        background-color: rgb(94, 43, 43);
+        border-style: none;
+        border-radius: 3px;
+        align-items: center;
+        
+
+        svg {
+          color: white;
+          height: 15px;
+          stroke-width: 3px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .up{
+      display: flex;
+      flex-direction: row;
+      background-color: index.$territaryColor;
+      
+      img {
+        width: 75px;
+        height: 75px;
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+
+      h4 {
+        height: 30px;
+        margin-right: 25px;
+        font-family: index.$secondaryFont;
+        color: index.$primaryFontColor;
+        font-size: 0.85rem;
+      }      
+      
+      input {
+        height: 20px;
+        width: 30px;
+      }
+    }
+
+    .down {
+      display: flex;
+      flex-direction: row;
+      background-color: index.$quaternaryColor;
+      align-items: center;
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-family: index.$territaryfont;
+        font-size: small;
+        color: index.$primaryFontColor;
+      }
+
+      .left {
+        display: flex;
+        justify-content: flex-start;
+
+        > input {
+          width: 50px;
+          margin-right: 10px;
+        }
+      }
+
+      .right {
+        justify-content: flex-end;
+      
+        > div {
+          margin-left: 10px;
+          padding: 5px;
+          background-color: rgb(43, 94, 54);
+        }
+
+        button {
+          margin-left: 10px;
+          border-style: none;
+          background-color: rgb(109, 114, 58);
+          color: white;
+          padding: 3px 7px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.emptyCart {
+  color: index.$primaryFontColor;
+  font-family: index.$territaryfont;
+  font-size: 0.875rem;
+}

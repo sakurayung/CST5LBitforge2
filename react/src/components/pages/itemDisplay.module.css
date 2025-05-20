@@ -1,0 +1,336 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 200px;
+  background-color: rgb(23, 29, 37);
+}
+.wrapper > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  background-color: rgb(31, 49, 80);
+}
+.top .left {
+  padding-right: 20px;
+}
+.top .left img {
+  height: 300px;
+  width: 300px;
+}
+.top .right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.top .right .namewrap {
+  width: 100%;
+  color: rgb(197, 195, 192);
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(197, 195, 192);
+}
+.top .right .namewrap h3 {
+  font-size: 1.75rem;
+}
+.top .right .namewrap p {
+  width: 100%;
+  text-align: end;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  padding-bottom: 5px;
+}
+.top .right .detailswrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.top .right .detailswrap .tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+.top .right .detailswrap .tags h4 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(197, 195, 192);
+  font-size: 0.875rem;
+  margin: 5px;
+}
+.top .right .detailswrap .tags > div {
+  display: flex;
+  justify-content: flex-start;
+}
+.top .right .detailswrap .tags > div > div {
+  background-color: rgb(29, 58, 82);
+  padding: 3px 10px;
+  margin: 3px;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  color: rgb(197, 195, 192);
+  font-size: 0.875rem;
+}
+.top .right .detailswrap .expand {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.top .right .detailswrap .expand > div {
+  margin: 10px;
+  color: rgb(197, 195, 192);
+  font-family: Arial, sans-serif;
+  width: 200px;
+}
+.top .right .detailswrap .expand > div h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.top .right .detailswrap .expand > div p {
+  font-size: 0.74rem;
+  margin-bottom: 5px;
+}
+.top .right .detailswrap .collapse {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-x: hidden;
+  height: 140px;
+  width: 100%;
+}
+.top .right .detailswrap .collapse > div {
+  margin: 10px;
+  color: rgb(197, 195, 192);
+  font-family: Arial, sans-serif;
+  width: 200px;
+}
+.top .right .detailswrap .collapse > div h4 {
+  font-size: 1rem;
+  padding-bottom: 5px;
+}
+.top .right .detailswrap .collapse > div p {
+  font-size: 0.74rem;
+  margin-bottom: 5px;
+}
+.top .right .detailswrap .button {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+.top .right .detailswrap .button button {
+  border-style: none;
+  padding: 3px 10px;
+  background-color: rgb(20, 82, 133);
+  color: rgb(197, 195, 192);
+  cursor: pointer;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.bottom .top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 7px;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  background-color: rgb(32, 63, 117);
+}
+.bottom .top button {
+  padding: 3px 10px;
+  margin: 2px 5px;
+  border-style: none;
+  font-family: Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+.bottom .top button a {
+  font-family: Arial, sans-serif;
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+}
+.bottom .top .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.bottom .top .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+.bottom .top .right > div {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+  background-color: rgb(23, 29, 37);
+  align-items: center;
+}
+.bottom .top .right .amountinput {
+  display: flex;
+  padding: 3px;
+  margin: 5px 0px;
+  background-color: rgb(78, 73, 87);
+  height: 100%;
+}
+.bottom .top .right .amountinput > input {
+  background-color: transparent;
+  border-style: none;
+  color: rgb(197, 195, 192);
+}
+.bottom .top .right .cart {
+  background-color: rgb(109, 114, 58);
+  color: rgb(190, 203, 52);
+}
+.bottom .top .right .buy {
+  background-color: rgb(43, 94, 54);
+  color: rgb(72, 204, 100);
+}
+.bottom .top .right .Editbtn {
+  background-color: rgb(20, 82, 133);
+}
+.bottom .top .right .Editbtn a {
+  color: rgb(17, 29, 51);
+}
+.bottom .top .right .pricewrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 15px;
+  background-color: rgb(33, 39, 46);
+}
+.bottom .top .right .pricewrap p {
+  background: linear-gradient(90deg, rgb(125, 204, 72), rgb(115, 190, 65));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+.bottom .commentswrap {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(33, 39, 46);
+  border-top: solid rgb(23, 29, 37) 10px;
+}
+.bottom .commentswrap .comment {
+  display: flex;
+  flex-direction: column;
+  padding: 13px 35px;
+  background-color: rgb(20, 82, 133);
+}
+.bottom .commentswrap .comment .innerComment {
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(33, 39, 46);
+}
+.bottom .commentswrap .comment .innerComment form textarea {
+  all: unset;
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  resize: none;
+  overflow: hidden;
+  color: rgb(197, 195, 192);
+  font-size: 0.875rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.bottom .commentswrap .comment .submitCommentwrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+.bottom .commentswrap .comment .submitCommentwrap button {
+  border-style: none;
+  background-color: rgb(31, 49, 80);
+  padding: 5px 15px;
+  font-size: 0.875rem;
+  font-family: Arial, sans-serif;
+  color: rgb(197, 195, 192);
+}
+.bottom .displaycomments {
+  display: flex;
+  background-color: rgb(33, 39, 46);
+}
+
+.dropdownWrapper {
+  position: relative;
+  display: inline-block;
+  background-color: rgb(23, 29, 37);
+}
+.dropdownWrapper > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 5px;
+  margin: 5px;
+  background-color: rgb(33, 39, 46);
+}
+
+.scoreLabel {
+  font-size: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(197, 195, 192);
+}
+
+.dropdownToggle {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(197, 195, 192);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: rgb(33, 39, 46);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  z-index: 0;
+  min-width: 80px;
+}
+
+.dropdownItem {
+  display: block;
+  font-size: 0.875rem;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(197, 195, 192);
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.stocks {
+  color: rgb(197, 195, 192);
+  font-family: Arial, sans-serif;
+  font-size: 0.875rem;
+}/*# sourceMappingURL=itemDisplay.module.css.map */

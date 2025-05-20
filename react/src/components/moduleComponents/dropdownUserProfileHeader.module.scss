@@ -1,0 +1,51 @@
+@use './../../index.scss' as index;
+
+.usernav {
+  position: relative;
+  display: inline-block;
+
+  // Username (hover trigger)
+  p {
+    color: index.$primaryFontColor;
+    font-family: index.$primaryFont;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding: 0px 10px;
+    cursor: pointer;
+  }
+
+  // Dropdown content (initially hidden)
+  .dropdowncontent {
+    display: none;
+  }
+
+  // Hover rule – nested properly
+  &:hover .dropdowncontent {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: index.$primaryColor;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.627);
+    z-index: 10;
+
+    button {
+      border-style: none;
+      background-color: transparent;
+      padding: 5px 15px;
+      margin-top: 10px;
+      color: index.$primaryFontColor;
+      font-family: index.$primaryFont;
+      font-size: 0.875rem;
+      font-weight: bold;
+
+      &:hover {
+        background-color: index.$hoverprimaryFontColor;
+        color: index.$primaryColor;
+      }
+    }
+  }
+}

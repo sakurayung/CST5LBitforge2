@@ -1,0 +1,218 @@
+@use '../../index.scss' as index;
+
+.itemwrap {
+  display: flex;
+  justify-content: center;
+  background-color: index.$primaryColor;
+  padding: 20px 30px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    background-color: index.$territaryColor;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+
+  textarea {
+    all: unset;
+    display: block;
+    width: 100%;   
+    max-height: 500px;     // Re-applied after unset
+    resize: none; // Disable manual resizing
+    overflow: hidden; // Hide scrollbars  
+    line-height: 1.5;
+    white-space: pre-wrap;  // wrap long words
+    word-wrap: break-word;
+  } 
+
+  .left {
+    padding: 10px;
+
+    .imagewrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      width: 200px;
+      background-color: gray;
+
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+    
+    
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+    p {
+      font-family: index.$territaryfont;
+      font-size: 0.875rem;
+      color: index.$primaryFontColor;
+    }
+
+    input, textarea {
+      font-family: index.$territaryfont;
+      font-size: 0.825rem;
+      color: index.$secondaryFontColor;
+      width: 100%;
+      border-style: none;
+      background-color: transparent;
+    }
+
+    td {
+      div{
+        display: flex;
+        align-items: center;
+        padding: 6px
+      }
+    }
+
+    .label {
+      div {
+        width: 100px;
+      }
+    }
+
+    .inputwrap {
+      > div {
+        width: 300px;
+
+        > div {
+          width: 100%;
+          padding: 3px;
+          background-color: index.$secondaryColor;
+          border-radius: 3px;
+        }
+      }
+    }
+
+  }
+}
+
+.buttom {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  table {
+    width: 100%;
+  }
+
+  p {
+    font-family: index.$territaryfont;
+    font-size: 0.875rem;
+    color: index.$primaryFontColor;
+  }
+
+  h4 {
+    padding-top: 20px;
+    font-family: index.$secondaryFont;
+    color: index.$primaryFontColor;
+    font-size: 0.875rem;
+  }
+  
+  textarea {
+    all: unset;
+    display: block;
+    width: 100%;   
+    max-height: 500px;     // Re-applied after unset
+    resize: none; // Disable manual resizing
+    overflow: hidden; // Hide scrollbars  
+    line-height: 1.5;
+    white-space: pre-wrap;  // wrap long words
+    word-wrap: break-word;
+  }
+
+  input, textarea {
+    font-family: index.$territaryfont;
+    font-size: 0.825rem;
+    color: index.$secondaryFontColor;
+    width: 100%;
+    border-style: none;
+    background-color: transparent;
+  }
+
+  
+
+  td {
+    div{
+      display: flex;
+      align-items: center;
+      padding: 6px
+    }
+  }
+  
+  .spectitle {
+
+  }
+
+  .specdetails {
+
+    .label {
+      div {
+        width: 100%;
+      }
+    }
+
+    .inputwrap {
+      > div {
+        width: 100%;
+
+        > div {
+          width: 100%;
+          padding: 3px;
+          background-color: index.$secondaryColor;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  .specdetailsArray {
+    .label {
+      div {
+        width: 100%;
+      }
+    }
+
+    .inputwrap {
+      > div {
+        width: 100%;
+
+        > div {
+          width: 100%;
+          padding: 3px;
+          background-color: index.$secondaryColor;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+
+.buttonwrap {
+  display: flex;
+  justify-content: end;
+  padding: 25px;
+
+  button {
+    border-style: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: index.$fifthColor;
+    color: index.$secondaryFontColor;
+    font-family: index.$territaryfont;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

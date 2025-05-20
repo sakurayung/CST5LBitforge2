@@ -1,0 +1,108 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainwrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+}
+.mainwrap header {
+  padding: 2px 50px;
+  width: auto;
+  background-color: rgb(20, 82, 133);
+}
+.mainwrap header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+}
+.mainwrap header nav div {
+  display: flex;
+  align-items: center;
+}
+.mainwrap header nav div a {
+  text-decoration: none;
+  color: rgb(197, 195, 192);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+.mainwrap header nav div a:hover {
+  color: rgba(197, 195, 192, 0.5);
+}
+.mainwrap header nav .leftnav {
+  justify-content: flex-start;
+  gap: 15px;
+}
+.mainwrap header nav .rightnav {
+  justify-content: flex-end;
+  gap: 15px;
+}
+.mainwrap header nav .rightnav .searchtab {
+  display: flex;
+  background-color: rgb(31, 49, 80);
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+.mainwrap header nav .rightnav .searchtab > input {
+  background-color: transparent;
+  border-style: none;
+  color: rgb(197, 195, 192);
+  font-size: 0.875rem;
+  width: 250px;
+}
+.mainwrap header nav .rightnav .searchtab > input:focus {
+  outline: none;
+}
+.mainwrap header nav .rightnav .searchtab > select {
+  background-color: transparent;
+  border-style: none;
+  color: rgb(197, 195, 192);
+  margin-left: 10px;
+}
+.mainwrap header nav .rightnav .searchtab > select option {
+  background-color: rgb(31, 49, 80);
+}
+.mainwrap .searchResultwrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+}
+.mainwrap .searchResultwrap .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  padding: 5px 100px;
+  background-color: rgb(197, 195, 192);
+}
+.mainwrap .searchResultwrap .header select {
+  background-color: rgb(31, 49, 80);
+  border-style: none;
+  padding: 3px 15px;
+  color: rgb(197, 195, 192);
+  font-size: 0.875rem;
+  font-family: Arial, sans-serif;
+}
+.mainwrap .searchResultwrap .header select:focus {
+  outline: none;
+}
+.mainwrap .searchResultwrap .body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}/*# sourceMappingURL=userLayout.module.css.map */

@@ -1,0 +1,77 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.pOrderItems {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 50px 75px;
+  overflow-y: auto;
+  background-color: rgb(23, 29, 37);
+}
+.pOrderItems > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.pOrderItems > div > div > div {
+  padding: 10px;
+}
+.pOrderItems > div .up {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(31, 49, 80);
+}
+.pOrderItems > div .up img {
+  width: 75px;
+  height: 75px;
+  margin-right: 25px;
+}
+.pOrderItems > div .up h4 {
+  height: 30px;
+  margin-right: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(197, 195, 192);
+  font-size: 0.85rem;
+}
+.pOrderItems > div .down {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(29, 58, 82);
+  align-items: center;
+}
+.pOrderItems > div .down > div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: small;
+  color: rgb(197, 195, 192);
+}
+.pOrderItems > div .down .left {
+  display: flex;
+  justify-content: flex-start;
+}
+.pOrderItems > div .down .left div {
+  margin-right: 10px;
+}
+.pOrderItems > div .down .right {
+  justify-content: flex-end;
+}
+.pOrderItems > div .down .right > div {
+  margin-left: 10px;
+  padding: 5px;
+  background-color: rgb(43, 94, 54);
+}/*# sourceMappingURL=pendingOrders.module.css.map */

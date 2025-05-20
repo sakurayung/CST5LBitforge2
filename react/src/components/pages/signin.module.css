@@ -1,0 +1,86 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+}
+.signin form {
+  padding: 25px;
+  background-color: rgb(197, 195, 192);
+  width: 300px;
+}
+.signin form h3 {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(23, 29, 37);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.signin form .inputGroup, .signin form .usernameBlock {
+  background-color: rgba(197, 195, 192, 0.31);
+  margin-bottom: 10px;
+}
+.signin form .inputGroup label, .signin form .usernameBlock label {
+  color: rgb(23, 29, 37);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.875rem;
+}
+.signin form .inputGroup > div, .signin form .usernameBlock > div {
+  background-color: rgb(166, 164, 162);
+}
+.signin form .inputGroup > div input, .signin form .usernameBlock > div input {
+  background-color: transparent;
+  border: none;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 8px 4px;
+  color: rgb(23, 29, 37);
+}
+.signin form .inputGroup:hover, .signin form .usernameBlock:hover {
+  background-color: rgba(197, 195, 192, 0.75);
+}
+.signin form .inputGroup .addresswrap, .signin form .usernameBlock .addresswrap {
+  background-color: rgb(197, 195, 192);
+}
+.signin form .inputGroup .addresswrap div, .signin form .usernameBlock .addresswrap div {
+  background-color: rgb(166, 164, 162);
+  display: inline-block;
+  min-width: 100px;
+  margin: 1px 4px 1px 0px;
+}
+.signin form .inputGroup .addresswrap div input, .signin form .usernameBlock .addresswrap div input {
+  background-color: transparent;
+  border: none;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 8px 4px;
+  color: rgb(23, 29, 37);
+}
+.signin form .usernameBlock .userLabel {
+  color: rgb(53, 133, 207);
+}
+.signin form .usernameBlock:hover .userLabel {
+  color: rgb(218, 0, 174);
+}
+.signin form button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: rgb(218, 0, 174);
+  color: white;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+}/*# sourceMappingURL=signin.module.css.map */

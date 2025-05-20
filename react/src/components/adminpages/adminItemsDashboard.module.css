@@ -1,0 +1,239 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.populatewrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+  padding: 15px 100px;
+}
+.populatewrap .populateItems {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(197, 195, 192);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: rgb(20, 82, 133);
+  padding: 10px 50px;
+}
+.header input {
+  border-style: none;
+  background-color: transparent;
+}
+.header select {
+  background-color: rgb(31, 49, 80);
+  color: rgb(197, 195, 192);
+  border-style: none;
+}
+.header .search {
+  padding: 2px 12px;
+  border-radius: 10px;
+  background-color: white;
+}
+.header .typesearch {
+  margin-left: 3px;
+}
+.header .sortselect {
+  margin-left: 20px;
+}
+
+.body {
+  padding: 10px;
+}
+
+.populateItemswrap {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow-y: auto;
+  padding: 0px;
+}
+.populateItemswrap .itemwrap {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid rgb(31, 49, 80);
+}
+.populateItemswrap .itemwrap img {
+  width: 70px;
+  height: 70px;
+}
+.populateItemswrap .itemwrap .idwrap {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  color: rgb(23, 29, 37);
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.populateItemswrap .itemwrap .namewrap {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 30px;
+  color: rgb(53, 98, 139);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+.populateItemswrap .itemwrap .namewrap p {
+  width: 100%;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.populateItemswrap .itemwrap .namewrap a {
+  all: unset;
+}
+.populateItemswrap .itemwrap .namewrap .username {
+  color: rgb(31, 49, 80);
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.populateItemswrap .itemwrap .stockwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: Arial, sans-serif;
+}
+.populateItemswrap .itemwrap .stockwrap p {
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  margin: 10px;
+}
+.populateItemswrap .itemwrap .stockwrap input {
+  height: 30px;
+}
+.populateItemswrap .itemwrap .stockwrap button {
+  background-color: rgb(172, 51, 51);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+.populateItemswrap .itemwrap .confirmwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: Arial, sans-serif;
+}
+.populateItemswrap .itemwrap .confirmwrap p {
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  margin: 10px;
+}
+.populateItemswrap .itemwrap .confirmwrap input {
+  height: 30px;
+}
+.populateItemswrap .itemwrap .confirmwrap button {
+  background-color: rgb(40, 144, 80);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+.populateItemswrap .itemwrap2 {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid rgb(31, 49, 80);
+  background-color: rgb(181, 139, 139);
+}
+.populateItemswrap .itemwrap2 img {
+  width: 70px;
+  height: 70px;
+}
+.populateItemswrap .itemwrap2 .idwrap {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  color: rgb(23, 29, 37);
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.populateItemswrap .itemwrap2 .namewrap {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 30px;
+  color: rgb(53, 98, 139);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+.populateItemswrap .itemwrap2 .namewrap p {
+  width: 100%;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.populateItemswrap .itemwrap2 .namewrap a {
+  all: unset;
+}
+.populateItemswrap .itemwrap2 .namewrap .username {
+  color: rgb(31, 49, 80);
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.populateItemswrap .itemwrap2 .stockwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: Arial, sans-serif;
+}
+.populateItemswrap .itemwrap2 .stockwrap p {
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  margin: 10px;
+}
+.populateItemswrap .itemwrap2 .stockwrap input {
+  height: 30px;
+}
+.populateItemswrap .itemwrap2 .stockwrap button {
+  background-color: rgb(172, 51, 51);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+.populateItemswrap .itemwrap2 .confirmwrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: Arial, sans-serif;
+}
+.populateItemswrap .itemwrap2 .confirmwrap p {
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  margin: 10px;
+}
+.populateItemswrap .itemwrap2 .confirmwrap input {
+  height: 30px;
+}
+.populateItemswrap .itemwrap2 .confirmwrap button {
+  background-color: rgb(40, 144, 80);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+}/*# sourceMappingURL=adminItemsDashboard.module.css.map */

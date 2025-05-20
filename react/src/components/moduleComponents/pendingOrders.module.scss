@@ -1,0 +1,80 @@
+@use './../../index.scss' as index;
+
+.pOrderItems {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 50px 75px;
+  overflow-y: auto;
+  background-color: index.$primaryColor;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    > div {
+      > div {
+        padding: 10px;
+      }
+    }
+
+    .up{
+      display: flex;
+      flex-direction: row;
+      background-color: index.$territaryColor;
+      
+      img {
+        width: 75px;
+        height: 75px;
+        margin-right: 25px;
+      }
+
+      h4 {
+        height: 30px;
+        margin-right: 25px;
+        font-family: index.$secondaryFont;
+        color: index.$primaryFontColor;
+        font-size: 0.85rem;
+      }   
+    }
+
+    .down {
+      display: flex;
+      flex-direction: row;
+      background-color: index.$quaternaryColor;
+      align-items: center;
+
+      > div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-family: index.$territaryfont;
+        font-size: small;
+        color: index.$primaryFontColor;
+      }
+
+      .left {
+        display: flex;
+        justify-content: flex-start;
+
+        div {
+          margin-right: 10px;
+        }
+      }
+
+      .right {
+        justify-content: flex-end;
+      
+        > div {
+          margin-left: 10px;
+          padding: 5px;
+          background-color: rgb(43, 94, 54);
+        }
+      }
+    }
+  }
+}

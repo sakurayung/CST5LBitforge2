@@ -1,0 +1,167 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.populatewrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(23, 29, 37);
+  padding: 15px 100px;
+}
+.populatewrap .populateItems {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(197, 195, 192);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background-color: rgb(20, 82, 133);
+  padding: 10px 50px;
+}
+.header input {
+  border-style: none;
+  background-color: transparent;
+}
+.header select {
+  background-color: rgb(31, 49, 80);
+  color: rgb(197, 195, 192);
+  border-style: none;
+}
+.header .search {
+  padding: 2px 12px;
+  border-radius: 10px;
+  background-color: white;
+}
+.header .typesearch {
+  margin-left: 3px;
+}
+.header .sortselect {
+  margin-left: 20px;
+}
+
+.body {
+  padding: 10px;
+}
+
+.populateUserswrap {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  min-height: 400px;
+  overflow-y: auto;
+  padding: 0px;
+}
+.populateUserswrap .userwrap {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border: 1px solid rgb(31, 49, 80);
+}
+.populateUserswrap .userwrap img {
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+}
+.populateUserswrap .userwrap .idwrap {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  color: rgb(23, 29, 37);
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.populateUserswrap .userwrap .namewrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 30px;
+  color: rgb(53, 98, 139);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.populateUserswrap .userwrap .namewrap h4 {
+  width: 100%;
+  margin-right: 10px;
+  text-align: left;
+  width: -moz-min-content;
+  width: min-content;
+}
+.populateUserswrap .userwrap .namewrap > div {
+  display: flex;
+  width: 100%;
+}
+.populateUserswrap .userwrap .namewrap > div p {
+  width: 100%;
+  text-align: left;
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  font-weight: normal;
+}
+.populateUserswrap .userwrap .namewrap .username {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.875rem;
+}
+.populateUserswrap .userwrap .namewrap .username .rolewrap {
+  padding: 5px 10px;
+  background-color: rgb(20, 82, 133);
+  color: rgb(197, 195, 192);
+  font-weight: bold;
+}
+.populateUserswrap .userwrap .namewrap .username p {
+  text-align: left;
+}
+.populateUserswrap .userwrap .namewrap .username > div {
+  margin-right: 10px;
+}
+.populateUserswrap .userwrap .namewrap .emailwrap {
+  margin-top: 10px;
+}
+.populateUserswrap .userwrap .stockwrap {
+  display: flex;
+  flex-direction: row;
+}
+.populateUserswrap .userwrap .stockwrap p {
+  margin: 10px;
+}
+.populateUserswrap .userwrap .deletewrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  font-family: Arial, sans-serif;
+}
+.populateUserswrap .userwrap .deletewrap p {
+  font-size: 0.75rem;
+  color: rgb(23, 29, 37);
+  margin: 10px;
+}
+.populateUserswrap .userwrap .deletewrap input {
+  height: 30px;
+}
+.populateUserswrap .userwrap .deletewrap button {
+  background-color: rgb(172, 51, 51);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 2px;
+}/*# sourceMappingURL=adminUsersDashboard.module.css.map */
