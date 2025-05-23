@@ -210,7 +210,7 @@ export default function ItemDisplay() {
       const response = await axiosClient.post('/comment-item', data);
       console.log(comment);
       setComment(""); // clear textarea
-      setComments([...comments, {username: user.username, comment: comment, role: user.role}])
+      setComments([...comments, {username: user.username, comment: comment, role: user.role, profile_picture: user.profile_picture}])
 
       // Optional: re-fetch or update comment list here
     } catch (error) {
@@ -484,7 +484,7 @@ export default function ItemDisplay() {
               {comments.length != 0 ? (comments.map((comments, index)=>(
                 <div key={index}>
                   <div className={itemDisplay.username}>
-                    <img src={comments.role?.toLowerCase() === 'admin' ? adminimg : comments.profile_picture ? `${import.meta.env.VITE_API_BASE_URL}${cmnt.profile_picture}`
+                    <img src={comments.role?.toLowerCase() === 'admin' ? adminimg : comments.profile_picture ? `${import.meta.env.VITE_API_BASE_URL}${comments.profile_picture}`
                       : placeholderImg} alt="" />
                     <h4>{comments.username}</h4>
                     {comments.role?.toLowerCase() === "admin" && (
