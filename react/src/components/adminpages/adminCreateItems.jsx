@@ -374,7 +374,7 @@ export default function AdminCreateItems(){
                               handleChange(e);
                               handleTextareaInput(e);
                             }}
-                            placeholder='Gaming_Desktop, PC, Laptop, etc.'
+                            placeholder='gaming desktop,pre-build desktop,gaming,high-end.'
                           />
                         </div>  
                       </div>
