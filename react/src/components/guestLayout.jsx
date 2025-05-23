@@ -80,7 +80,7 @@ export default function GuestLayout() {
                 <option value="name">Name</option>
               </select>
             </div>
-            <Link to="/signin" onClick={(e) => {setisSearch(false)}}>Sign In</Link>
+            <Link to="/signin" onClick={(e) => {setisSearch(false)}}>Sign Up</Link>
             <Link to="/login" onClick={(e) => {setisSearch(false)}}>Login</Link>
           </div>
         </nav>

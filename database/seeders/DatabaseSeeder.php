@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            'username'      => 'Comshop',
+            'username'      => 'Bitforge',
             'email'         => 'ComShop@gmail.com',
             'password'      => Hash::make('comshop123'),
             'phone_number' => '09123456789',

@@ -79,6 +79,15 @@
       }
     }
 
+    > p {
+      font-size: 0.75rem;
+      font-family: index.$territaryfont;
+
+      a {
+        font-style: normal;
+      }
+    }
+    
     button {
       margin-top: 10px;
       padding: 10px 20px;
@@ -88,5 +97,6 @@
       cursor: pointer;
       font-family: index.$primaryFont;
     }
+    
   }
 }

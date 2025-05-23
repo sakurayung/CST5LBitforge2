@@ -175,7 +175,8 @@ export default function SignIn() {
             /></div>
           </div>
         </div>
-        Already have an account? Please <a href='/login'>Login</a>
+        <p>Already have an account? Please <a href='/login'>Login</a></p>
+        
         <button type="submit">Sign In</button>
       </form>
     </div>

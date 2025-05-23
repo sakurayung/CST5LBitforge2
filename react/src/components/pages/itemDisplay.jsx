@@ -204,9 +204,9 @@ export default function ItemDisplay() {
 
     try {
       const response = await axiosClient.post('/comment-item', data);
-      alert(response.data.message); // show success message
       console.log(comment);
       setComment(""); // clear textarea
+      window.location.reload();
 
       // Optional: re-fetch or update comment list here
     } catch (error) {
