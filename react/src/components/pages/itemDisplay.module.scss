@@ -308,6 +308,156 @@
   .displaycomments {
     display: flex;
     background-color: rgb(33, 39, 46);
+    flex-direction: column;
+
+    .commentwrap {
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+
+      > div {
+        margin: 25px;
+        border-radius: 10px;
+        max-width: fit-content;
+      }
+    }
+
+    .username {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 3px 15px;  
+      background-color: index.$territaryColor;
+      color: index.$primaryFontColor;
+
+      >img {
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        margin: 3px;
+      }
+
+      > h4 {
+        margin: 2px 10px;
+        font-family: index.$secondaryFont;
+        font-size: 0.875rem;
+      }
+
+      .userrole {
+        margin: 2px 10px;
+        padding: 3px 10px;
+        background-color: index.$fifthColor;
+        border-radius: 4px;
+
+        p {
+          font-family: index.$territaryfont;
+          font-size: 0.75rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .comment {
+      padding: 10px 25px;
+      background-color: rgb(32, 63, 117);
+
+      p {
+        font-family: index.$territaryfont;
+        color: index.$primaryFontColor;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      .edit {
+        textarea {
+          width: 100%;
+          height: auto;
+          min-height: 50px;
+          font-family: index.$territaryfont;
+          color: index.$primaryFontColor;
+          font-size: 0.875rem;
+          line-height: 1.5;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          resize: vertical; // Or `none` if you want fixed size
+          padding: 0;
+          white-space: pre-wrap;
+        }
+      }
+    }
+
+    .vote {
+      display: flex;
+      flex-direction: row;
+      background-color: rgb(35, 47, 69);;
+
+      .voteratio {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: index.$fifthColor;
+        padding: 1px 10px;
+        margin: 3px 10px;
+        border-radius: 15px;
+        
+        svg {
+          width: 20px;
+          height: 20px;
+          margin: 3px 4px;
+          color: index.$territaryColor;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+          font-weight: bold;
+        }
+
+        .upvote {
+          &:hover {
+            transform: scale(1.2);
+            color: rgb(60, 158, 227)
+          }
+          &:active {
+            color: rgb(60, 158, 227)
+          }
+        }
+
+        .downvote {
+          &:hover {
+            transform: scale(1.2);
+            color: rgb(235, 70, 103)
+          }
+          &:active {
+            color: rgb(235, 70, 103)
+          }
+        }
+
+        p {
+          color: index.$primaryFontColor;
+          font-family: index.$secondaryFont;
+          font-weight: bold;
+          font-size: 0.75rem;
+          padding: 1px 10px
+        }
+      }
+
+      .votecount {
+        display: flex;
+        align-items: center;
+        
+        p {
+          font-family: index.$territaryfont;
+          font-size: 0.75rem;
+          font-weight: bold;
+          font-style: italic;
+          color: rgb(39, 77, 144);
+          
+        }
+      }
+    }
+
+
   }
 }
 

@@ -5,6 +5,8 @@ import { useGlobalContext } from "../context/globalContextProvider";
 import DisplayComments from "../moduleComponents/displayComments";
 import itemDisplay from './itemDisplay.module.scss';
 import axiosClient from "../../axiosClient";
+import placeholderImg from './../../assets/placeholder-profile_3_5.png';
+import adminimg from './../../assets/Untitled.png';
 
 export default function ItemDisplay() {
   const { user, item, setItem, amount, setAmount, } = useGlobalContext();
@@ -12,6 +14,7 @@ export default function ItemDisplay() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedRating, setSelectedRating] = useState(null);
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -29,6 +32,7 @@ export default function ItemDisplay() {
 
   useEffect(() => {
     fetchItemDetails();
+    setComments([]);
   },[]);
 
   const tags = Array.isArray(item?.tags) ? item.tags : [];
@@ -206,7 +210,7 @@ export default function ItemDisplay() {
       const response = await axiosClient.post('/comment-item', data);
       console.log(comment);
       setComment(""); // clear textarea
-      window.location.reload();
+      setComments([...comments, {username: user.username, comment: comment, role: user.role}])
 
       // Optional: re-fetch or update comment list here
     } catch (error) {
@@ -258,9 +262,6 @@ export default function ItemDisplay() {
       alert(`Failed to add to cart: ${errMsg}`);
       console.error('Add to Cart Error:', error);
     }
-
-    
-
   }
 
   const handleAmountChange = (e) => {
@@ -479,6 +480,27 @@ export default function ItemDisplay() {
             </div>
           </div>
           <div className={itemDisplay.displaycomments}>
+            <div className={itemDisplay.commentwrap}>
+              {comments.length != 0 ? (comments.map((comments, index)=>(
+                <div key={index}>
+                  <div className={itemDisplay.username}>
+                    <img src={comments.role?.toLowerCase() === 'admin' ? adminimg : comments.profile_picture ? `${import.meta.env.VITE_API_BASE_URL}${cmnt.profile_picture}`
+                      : placeholderImg} alt="" />
+                    <h4>{comments.username}</h4>
+                    {comments.role?.toLowerCase() === "admin" && (
+                      <div className={itemDisplay.userrole}>
+                        <p>{comments.role?.charAt(0).toUpperCase() + comments.role?.slice(1).toLowerCase()}</p>
+                      </div>
+                    )}
+                  </div>
+                  <div className={itemDisplay.comment}>
+                      <div>
+                        <p>{comments.comment}</p>
+                      </div>
+                  </div>
+                </div>
+              ))): (<></>)}
+            </div>
             <DisplayComments />
           </div>
         </div>
