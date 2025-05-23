@@ -23,74 +23,22 @@ return new class extends Migration
             $table->integer('reviews_count')->default(0);
             $table->decimal('average_rating', 3, 2)->default(0.00);
 
-            // Specs (JSON-formatted fields that can hold null values)
-            $table->json('processor')->nullable()->default(json_encode([
-                'brand' => null,
-                'model' => null,
-                'cores' => null,
-                'threads' => null,
-                'base_clock' => null,
-                'boost_clock' => null,
-            ]));
-
-            $table->json('graphics_card')->nullable()->default(json_encode([
-                'brand' => null,
-                'model' => null,
-                'vram' => null,
-                'clock_speed' => null,
-            ]));
-
-            $table->json('ram')->nullable()->default(json_encode([
-                'type' => null,
-                'capacity' => null,
-                'speed' => null,
-            ]));
-
-            $table->json('storage')->nullable()->default(json_encode([
-                'type' => null,
-                'capacity' => null,
-            ]));
-
-            $table->json('motherboard')->nullable()->default(json_encode([
-                'chipset' => null,
-                'form_factor' => null,
-                'socket' => null,
-            ]));
-
-            $table->json('display')->nullable()->default(json_encode([
-                'size' => null,
-                'resolution' => null,
-                'panel_type' => null,
-                'refresh_rate' => null,
-            ]));
-
-            $table->json('battery')->nullable()->default(json_encode([
-                'capacity' => null,
-                'life' => null,
-            ]));
-
-            $table->json('keyboard')->nullable()->default(json_encode([
-                'type' => null,
-                'backlit' => null,
-            ]));
-
-            $table->json('mouse')->nullable()->default(json_encode([
-                'type' => null,
-                'dpi' => null,
-            ]));
-
-            $table->json('microphone')->nullable()->default(json_encode([
-                'type' => null,
-                'pattern' => null,
-            ]));
-
-            $table->json('headset')->nullable()->default(json_encode([
-                'driver_size' => null,
-            ]));
+            // Specs (JSON-formatted fields) - removed default values
+            $table->json('processor')->nullable();
+            $table->json('graphics_card')->nullable();
+            $table->json('ram')->nullable();
+            $table->json('storage')->nullable();
+            $table->json('motherboard')->nullable();
+            $table->json('display')->nullable();
+            $table->json('battery')->nullable();
+            $table->json('keyboard')->nullable();
+            $table->json('mouse')->nullable();
+            $table->json('microphone')->nullable();
+            $table->json('headset')->nullable();
 
             // Array-form specs as comma-separated strings
-            $table->string('ports')->nullable(); // "USB 3.2, USB-C, HDMI, DisplayPort, Ethernet"
-            $table->string('connectivity')->nullable(); // "WiFi 6E, Bluetooth 5.3"
+            $table->string('ports')->nullable();
+            $table->string('connectivity')->nullable();
 
             $table->string('operating_system')->nullable();
             $table->string('power_supply')->nullable();
@@ -100,6 +48,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
+        
         // Cart Items Table
         Schema::create('cart_items', function (Blueprint $table) {
             $table->string('id')->primary();
@@ -141,7 +90,7 @@ return new class extends Migration
             $table->string('item_id');
             $table->foreign('user_id')->references('id')->on('userstable');
             $table->foreign('item_id')->references('id')->on('items');
-            $table->integer('quantity');;
+            $table->integer('quantity');
             $table->decimal('unit_price', 15, 2);
             $table->decimal('total_amount', 15, 2);
             $table->decimal('shipping_fee', 15, 2);
@@ -154,6 +103,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // Comments Table
         Schema::create('comments', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('item_id');
@@ -165,7 +115,8 @@ return new class extends Migration
             $table->timestamps();
         });
 
-         Schema::create('itemsrate' , function (Blueprint $table) {
+        // Item Ratings Table
+        Schema::create('itemsrate', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('item_id');
             $table->string('user_id');
@@ -181,10 +132,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cart_items');
-        Schema::dropIfExists('purchase_receipts');
-        Schema::dropIfExists('pending_orders');
-        Schema::dropIfExists('comments');
         Schema::dropIfExists('itemsrate');
+        Schema::dropIfExists('comments');
+        Schema::dropIfExists('pending_orders');
+        Schema::dropIfExists('purchase_receipts');
+        Schema::dropIfExists('cart_items');
+        Schema::dropIfExists('items');
     }
 };
