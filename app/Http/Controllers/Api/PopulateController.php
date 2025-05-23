@@ -110,7 +110,7 @@ class PopulateController extends Controller
         }
     }
 
-    public function populatetopitems(Request $request)
+    public function populateTopItems(Request $request)
     {
         $quer1 = $request->query('query1'); // Optional search term
         $quer2 = $request->query('query2'); // Optional search term
