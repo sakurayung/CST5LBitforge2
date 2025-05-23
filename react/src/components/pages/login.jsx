@@ -71,7 +71,7 @@ export default function Login() {
             />
           </div>
         </div>
-
+        Doesn't have an account? Please <a href='/signin'>Sign Up</a>
         <button type="submit">Login</button>
       </form>
     </div>

@@ -67,7 +67,7 @@ export default function SignIn() {
   return (
     <div className={signin.signin}>
       <form onSubmit={handleSubmit}>
-        <h3>Sign In</h3>
+        <h3>Sign Up</h3>
   
         {/* Username with hover effect */}
         <div className={signin.usernameBlock}>
@@ -175,7 +175,7 @@ export default function SignIn() {
             /></div>
           </div>
         </div>
-  
+        Already have an account? Please <a href='/login'>Login</a>
         <button type="submit">Sign In</button>
       </form>
     </div>
