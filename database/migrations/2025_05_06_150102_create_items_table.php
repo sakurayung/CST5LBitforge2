@@ -11,6 +11,44 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Items Table
+        Schema::create('items', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('image_url');
+            $table->string('item_name');
+            $table->text('tags'); // "Gaming, Desktop, High-end"
+            $table->string('warehouse');
+            $table->decimal('price', 10, 2);
+            $table->integer('stocks')->default(0);
+            $table->integer('reviews_count')->default(0);
+            $table->decimal('average_rating', 3, 2)->default(0.00);
+
+            // Specs (JSON-formatted fields) - removed default values
+            $table->json('processor')->nullable();
+            $table->json('graphics_card')->nullable();
+            $table->json('ram')->nullable();
+            $table->json('storage')->nullable();
+            $table->json('motherboard')->nullable();
+            $table->json('display')->nullable();
+            $table->json('battery')->nullable();
+            $table->json('keyboard')->nullable();
+            $table->json('mouse')->nullable();
+            $table->json('microphone')->nullable();
+            $table->json('headset')->nullable();
+
+            // Array-form specs as comma-separated strings
+            $table->string('ports')->nullable();
+            $table->string('connectivity')->nullable();
+
+            $table->string('operating_system')->nullable();
+            $table->string('power_supply')->nullable();
+            $table->string('cooling')->nullable();
+            $table->string('dimensions')->nullable();
+            $table->string('weight')->nullable();
+
+            $table->timestamps();
+        });
+        
         // Cart Items Table
         Schema::create('cart_items', function (Blueprint $table) {
             $table->string('id')->primary();
@@ -52,7 +90,7 @@ return new class extends Migration
             $table->string('item_id');
             $table->foreign('user_id')->references('id')->on('userstable');
             $table->foreign('item_id')->references('id')->on('items');
-            $table->integer('quantity');;
+            $table->integer('quantity');
             $table->decimal('unit_price', 15, 2);
             $table->decimal('total_amount', 15, 2);
             $table->decimal('shipping_fee', 15, 2);
@@ -65,6 +103,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // Comments Table
         Schema::create('comments', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('item_id');
@@ -76,7 +115,8 @@ return new class extends Migration
             $table->timestamps();
         });
 
-         Schema::create('itemsrate' , function (Blueprint $table) {
+        // Item Ratings Table
+        Schema::create('itemsrate', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('item_id');
             $table->string('user_id');
@@ -92,10 +132,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cart_items');
-        Schema::dropIfExists('purchase_receipts');
-        Schema::dropIfExists('pending_orders');
-        Schema::dropIfExists('comments');
         Schema::dropIfExists('itemsrate');
+        Schema::dropIfExists('comments');
+        Schema::dropIfExists('pending_orders');
+        Schema::dropIfExists('purchase_receipts');
+        Schema::dropIfExists('cart_items');
+        Schema::dropIfExists('items');
     }
 };
