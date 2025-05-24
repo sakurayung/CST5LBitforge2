@@ -21,41 +21,34 @@ export default function AdminItemsDashboard({
     <div className={itemsDashboard.populatewrap}>
       <div className={itemsDashboard.populateItems}>
         <div className={itemsDashboard.header}>
-          <div className={itemsDashboard.search}>
-            <input type="text" placeholder='searchItems' 
-            onChange={(e) => onSearchChange(e.target.value)}
-            />
-          </div>
-          <select name="typesearch" id="" className={itemsDashboard.typesearch}
-          onChange={(e) => onSearchByChange(e.target.value)}
-          >
-            <option value="id">Id</option>
-            <option value="tag">Tag</option>
-          </select>
           {isDisplayItems && (
-          <select name="" id="" className={itemsDashboard.sortselect}
-          onChange={(e) => onSortChange(e.target.value)}
-          >
-            <option value="">Sort by</option>
-            <option value="stocks">Stocks</option>
-            <option value="price">Price</option>
-            <option value="rating">Rating</option>
-          </select>
-          )}
-          {isPendingOrder && (
-          <select name="" id="" className={itemsDashboard.sortselect}
-          onChange={(e) => onSortChange(e.target.value)}
-          >
-            <option value="">Sort by</option>
-            <option value="oldest">Oldest</option>
-            <option value="newest">Newest</option>
-          </select>
-          )}
-          
+          <>
+            <div className={itemsDashboard.search}>
+           
+              <input type="text" placeholder='searchItems' 
+              onChange={(e) => onSearchChange(e.target.value)}
+              />
+            </div>
+            <select name="typesearch" id="" className={itemsDashboard.typesearch}
+            onChange={(e) => onSearchByChange(e.target.value)}
+            >
+              <option value="id">Id</option>
+              <option value="tag">Tag</option>
+            </select>
+            <select name="" id="" className={itemsDashboard.sortselect}
+            onChange={(e) => onSortChange(e.target.value)}
+            >
+              <option value="">Sort by</option>
+              <option value="stocks">Stocks</option>
+              <option value="price">Price</option>
+              <option value="rating">Rating</option>
+            </select>
+          </>
+          )} 
         </div>
         <div className={itemsDashboard.body}>
           <div className={itemsDashboard.populateItemswrap}>
-          {arr.map ((item, index)=> (
+          {arr?.map ((item, index)=> (
             <div key={item.item_id} className={item.stocks <= 0 ? itemsDashboard.itemwrap2 : itemsDashboard.itemwrap}>
               {isDisplayItems && (
                 <div className={itemsDashboard.idwrap}>

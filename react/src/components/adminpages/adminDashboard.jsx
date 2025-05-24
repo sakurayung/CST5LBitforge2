@@ -12,7 +12,6 @@ export default function AdminDashboard(){
     user, 
     adnminDetails, setAdnminDetails,
     displayItems, setDisplayItems,
-    pendingOrders, setPendingOrders,
     displayUsers, setDisplayUsers } = useGlobalContext();
 
   const [sortUserBy, setSortUserBy] = useState("id");
@@ -50,7 +49,7 @@ export default function AdminDashboard(){
       
       alert(`Order confirmed! Delivered at: ${new Date(response.data.delivered_at).toLocaleString()}`);
       // Refresh data or update UI
-      fetchPendingOrders(sortPendingOrdersBy, searchbypendingorders, searchPendingOrdersKeyword);
+      fetchAdminDetails();
       
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Failed to confirm delivery';
@@ -127,6 +126,7 @@ export default function AdminDashboard(){
     try {
       const res = await axiosClient.delete(`/user/${userId}`);
       fetchUsers(sortUserBy, searchUsername); // Refresh list after deletion
+      fetchAdminDetails();
       alert(res.data.message);
     } catch (err) {
       console.error(`Failed to delete user ${userId}:`, err);
@@ -168,10 +168,10 @@ export default function AdminDashboard(){
   }, [sortItemsBy, searchbyitems, searchItemsKeyword]);
 
   useEffect(() => {
-    fetchPendingOrders(sortPendingOrdersBy, searchbypendingorders, searchPendingOrdersKeyword);
-  }, [sortPendingOrdersBy, searchbypendingorders, searchPendingOrdersKeyword]);
+    fetchAdminDetails()
+  }, []);
 
-  useEffect(() => {
+  function fetchAdminDetails() {
     axiosClient.get('/display-admin-details')
       .then(({ data }) => {
         setAdnminDetails(data);
@@ -179,7 +179,7 @@ export default function AdminDashboard(){
       .catch((err) => {
         console.error("Failed to load admin details:", err);
       });
-  }, []);
+  }
   
   async function fetchUsers(sort, username = "") {
     try {
@@ -206,25 +206,6 @@ export default function AdminDashboard(){
       setDisplayItems(res.data);
     } catch (err) {
       console.error("Failed to fetch items:", err);
-    }
-  }
-
-  async function fetchPendingOrders(sort, searchBy, keyword) {
-    try {
-      const params = {
-        sortby: sort,       // 'oldest', 'newest'
-        searchby: searchBy, // 'id' or 'tags'
-        keyword: keyword,   // the search term
-      };
-      const res = await axiosClient.get(`/pending-orders`, { params });
-      setPendingOrders(res.data); // Assuming this sets state
-    } catch (err) {
-        if (err.response && err.response.data) {
-        console.error("Backend error message:", err.response.data.message);
-        console.error("Detailed error:", err.response.data.error);
-      } else {
-        console.error("Unknown error occurred:", err.message || err);
-      }
     }
   }
   
@@ -265,11 +246,8 @@ export default function AdminDashboard(){
             </div>
             <div className={dashboard.items}>
               <AdminItemsDashboard 
-              arr={pendingOrders} 
+              arr={adnminDetails.pending_orders} 
               onConfirm={handleCheckItem} 
-              onSearchChange={(val) => setSearchPendingOrdersKeyword(val)}
-              onSortChange={(val) => setSortPendingOrdersBy(val)}
-              onSearchByChange={(val) => setSearchpendingorders(val)}
               isPendingOrder />
             </div>
           </section>
