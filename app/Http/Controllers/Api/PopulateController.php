@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redis;
 use illuminate\Support\Facades\Log;
 use App\Models\Item;
 use App\models\PendingOrder;
+use Carbon\Carbon;
 
 
 class PopulateController extends Controller
@@ -215,75 +216,86 @@ class PopulateController extends Controller
     public function AdminPendingOrders(Request $request)
     {
         try {
-            $query = PendingOrder::with(['item:id,image_url,tags,item_name'])
+            // Validate request parameters
+            $validated = $request->validate([
+                'sortby' => 'nullable|in:oldest,newest',
+                'searchby' => 'nullable|in:id,tags',
+                'keyword' => 'nullable|string|max:255',
+            ]);
+
+            $sortBy = $validated['sortby'] ?? 'oldest';
+            $searchBy = $validated['searchby'] ?? 'id';
+            $keyword = $validated['keyword'] ?? '';
+
+            // Base query with eager loading
+            $query = PendingOrder::with(['item', 'user'])
                 ->select([
-                    'pending_orders.id as pending_order_id',
-                    'pending_orders.item_id',
-                    'pending_orders.user_id',
-                    'pending_orders.quantity as amount',
-                    'pending_orders.shipping_fee',
-                    'pending_orders.grand_total',
-                    'pending_orders.fullname',
-                    'pending_orders.phone_number',
-                    'pending_orders.ordered_at',
-                    'pending_orders.deliver_to'
+                    'id as pending_order_id',
+                    'item_id',
+                    'user_id',
+                    'fullname',
+                    'phone_number',
+                    'total_amount as amount',
+                    'deliver_to as address',
+                    'shipping_fee',
+                    'grand_total',
+                    'ordered_at'
                 ]);
 
-            // Apply filters if provided
-            if ($request->has('item_id')) {
-                $query->where('item_id', $request->item_id);
+            // Apply search filter
+            if (!empty($keyword)) {
+                if ($searchBy === 'id') {
+                    $query->where('id', 'like', "%{$keyword}%");
+                } elseif ($searchBy === 'tags') {
+                    $query->whereHas('item', function ($q) use ($keyword) {
+                        $q->where('tags', 'like', "%{$keyword}%");
+                    });
+                }
             }
 
-            if ($request->has('tag')) {
-                $query->whereHas('item', function($q) use ($request) {
-                    $q->where('tags', 'like', '%'.$request->tag.'%');
-                });
+            // Apply sorting
+            if ($sortBy === 'oldest') {
+                $query->orderBy('ordered_at', 'asc');
+            } else {
+                $query->orderBy('ordered_at', 'desc');
             }
 
-            // Apply sorting (default: oldest first)
-            $sortOrder = $request->input('sort', 'oldest') === 'newest' ? 'desc' : 'asc';
-            $query->orderBy('ordered_at', $sortOrder);
+            // Execute query and transform results
+            $orders = $query->get()->map(function ($order) {
+                return [
+                    'pending_order_id' => $order->pending_order_id,
+                    'item_id' => $order->item_id,
+                    'user_id' => $order->user_id,
+                    'image_url' => $order->item->image_url ?? null,
+                    'fullname' => $order->fullname,
+                    'phone_number' => $order->phone_number,
+                    'amount' => (float)$order->amount,
+                    'address' => $order->address,
+                    'item_name' => $order->item->item_name ?? null,
+                    'shipping_fee' => (float)$order->shipping_fee,
+                    'grand_total' => (float)$order->grand_total,
+                    'ordered_at' => $order->ordered_at instanceof Carbon 
+                        ? $order->ordered_at->toDateTimeString() 
+                        : $order->ordered_at,
+                ];
+            });
 
-            $pendingOrders = $query->get()
-                ->map(function ($order) {
-                    return [
-                        'pending_order_id' => $order->pending_order_id,
-                        'item_id' => $order->item_id,
-                        'user_id' => $order->user_id,
-                        'image_url' => $order->item->image_url,
-                        'fullname' => $order->fullname,
-                        'phone_number' => $order->phone_number,
-                        'amount' => $order->amount,
-                        'address' => $order->deliver_to,
-                        'item_name' => $order->item->item_name,
-                        'shipping_fee' => (float)$order->shipping_fee,
-                        'grand_total' => (float)$order->grand_total,
-                        'ordered_at' => $order->ordered_at instanceof \Carbon\Carbon 
-                            ? $order->ordered_at->toDateTimeString() 
-                            : $order->ordered_at,
-                    ];
-                });
+            return response()->json($orders);
 
+        } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json([
-                'success' => true,
-                'data' => $pendingOrders,
-                'message' => 'Pending orders retrieved successfully'
-            ]);
-
+                'message' => 'Invalid request parameters',
+                'errors' => $e->errors()
+            ], 422);
         } catch (\Exception $e) {
-            Log::error('AdminPendingOrders Error', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
+            // Log the error for debugging
+            Log::error('Failed to fetch pending orders: ' . $e->getMessage());
+            
             return response()->json([
-                'success' => false,
-                'message' => 'Failed to fetch pending orders',
-                'error' => $e->getMessage()
+                'message' => 'Failed to retrieve pending orders',
+                'error' => 'Server error occurred'
             ], 500);
         }
     }
-
-
     
 }
