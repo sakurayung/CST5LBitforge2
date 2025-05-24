@@ -217,9 +217,14 @@ export default function AdminDashboard(){
         keyword: keyword,   // the search term
       };
       const res = await axiosClient.get(`/pending-orders`, { params });
-      setPendingOrders(res.data.pending_orders); // Assuming this sets state
+      setPendingOrders(res.data); // Assuming this sets state
     } catch (err) {
-      console.error("Failed to fetch pending orders:", err);
+        if (err.response && err.response.data) {
+        console.error("Backend error message:", err.response.data.message);
+        console.error("Detailed error:", err.response.data.error);
+      } else {
+        console.error("Unknown error occurred:", err.message || err);
+      }
     }
   }
   
