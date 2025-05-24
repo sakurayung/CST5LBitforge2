@@ -222,41 +222,6 @@ export default function AdminDashboard(){
       console.error("Failed to fetch pending orders:", err);
     }
   }
-
-  async function fetchPendingOrders(sort, searchBy, keyword) {
-    try {
-      const params = {
-        sort: sort === 'newest' ? 'newest' : 'oldest',
-      };
-
-      if (keyword.trim() !== "") {
-        if (searchBy === 'id') {
-          params.item_id = keyword;
-        } else if (searchBy === 'tags') {
-          params.tag = keyword;
-        }
-      }
-
-      const res = await axiosClient.get('/pending-orders', { params });
-      
-      // Format the ordered_at date if needed
-      const formattedOrders = res.data.data.map(order => ({
-        ...order,
-        ordered_at: order.ordered_at || new Date().toISOString() // fallback if null
-      }));
-      
-      setPendingOrders(formattedOrders);
-    } catch (err) {
-    // Laravel validation or internal error
-      if (err.response && err.response.data) {
-        console.error("Backend error message:", err.response.data.message);
-        console.error("Detailed error:", err.response.data.error);
-      } else {
-        console.error("Unknown error occurred:", err.message || err);
-      }
-      // Optionally set an error state here
-    }
-  }
   
 
   return (
