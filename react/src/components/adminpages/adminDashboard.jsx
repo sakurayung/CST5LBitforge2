@@ -247,7 +247,13 @@ export default function AdminDashboard(){
       
       setPendingOrders(formattedOrders);
     } catch (err) {
-      console.error("Failed to fetch pending orders:", err);
+    // Laravel validation or internal error
+      if (err.response && err.response.data) {
+        console.error("Backend error message:", err.response.data.message);
+        console.error("Detailed error:", err.response.data.error);
+      } else {
+        console.error("Unknown error occurred:", err.message || err);
+      }
       // Optionally set an error state here
     }
   }
