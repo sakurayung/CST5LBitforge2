@@ -212,7 +212,7 @@ class PopulateController extends Controller
     }
 
     
-    public function searchPendingOrders(Request $request)
+    public function AdminPendingOrders(Request $request)
     {
         try {
             $query = PendingOrder::with(['item:id,image_url,tags,item_name'])
@@ -229,52 +229,49 @@ class PopulateController extends Controller
                     'pending_orders.deliver_to'
                 ]);
 
-            $searchBy = strtolower($request->query('searchby', 'id'));
-            $keyword = strtolower($request->query('keyword', ''));
-            $sort = strtolower($request->query('sort', 'oldest'));
-
-            // 🔍 SEARCHING
-            if (!empty($keyword)) {
-                if ($searchBy === 'id') {
-                    $query->where('pending_orders.id', $keyword);
-                } elseif ($searchBy === 'tags') {
-                    $query->whereHas('item', function ($q) use ($keyword) {
-                        $q->where('tags', 'LIKE', '%' . $keyword . '%');
-                    });
-                } elseif ($searchBy === 'name') {
-                    $query->whereHas('item', function ($q) use ($keyword) {
-                        $q->where('item_name', 'LIKE', '%' . $keyword . '%');
-                    });
-                }
+            // Apply filters if provided
+            if ($request->has('item_id')) {
+                $query->where('item_id', $request->item_id);
             }
 
-            // 🔃 SORTING
-            $sortOrder = $sort === 'newest' ? 'desc' : 'asc';
+            if ($request->has('tag')) {
+                $query->whereHas('item', function($q) use ($request) {
+                    $q->where('tags', 'like', '%'.$request->tag.'%');
+                });
+            }
+
+            // Apply sorting (default: oldest first)
+            $sortOrder = $request->input('sort', 'oldest') === 'newest' ? 'desc' : 'asc';
             $query->orderBy('ordered_at', $sortOrder);
 
-            // 📦 GET & TRANSFORM
-            $pendingOrders = $query->get()->map(function ($order) {
-                return [
-                    'pending_order_id' => $order->pending_order_id,
-                    'item_id' => $order->item_id,
-                    'user_id' => $order->user_id,
-                    'image_url' => $order->item->image_url,
-                    'fullname' => $order->fullname,
-                    'phone_number' => $order->phone_number,
-                    'amount' => $order->amount,
-                    'address' => $order->deliver_to,
-                    'item_name' => $order->item->item_name,
-                    'shipping_fee' => (float)$order->shipping_fee,
-                    'grand_total' => (float)$order->grand_total,
-                    'ordered_at' => $order->ordered_at instanceof \Carbon\Carbon
-                        ? $order->ordered_at->toDateTimeString()
-                        : $order->ordered_at,
-                ];
-            });
+            $pendingOrders = $query->get()
+                ->map(function ($order) {
+                    return [
+                        'pending_order_id' => $order->pending_order_id,
+                        'item_id' => $order->item_id,
+                        'user_id' => $order->user_id,
+                        'image_url' => $order->item->image_url,
+                        'fullname' => $order->fullname,
+                        'phone_number' => $order->phone_number,
+                        'amount' => $order->amount,
+                        'address' => $order->deliver_to,
+                        'item_name' => $order->item->item_name,
+                        'shipping_fee' => (float)$order->shipping_fee,
+                        'grand_total' => (float)$order->grand_total,
+                        'ordered_at' => $order->ordered_at instanceof \Carbon\Carbon 
+                            ? $order->ordered_at->toDateTimeString() 
+                            : $order->ordered_at,
+                    ];
+                });
 
-            return response()->json($pendingOrders);
+            return response()->json([
+                'success' => true,
+                'data' => $pendingOrders,
+                'message' => 'Pending orders retrieved successfully'
+            ]);
+
         } catch (\Exception $e) {
-            Log::error('searchPendingOrders Error', [
+            Log::error('AdminPendingOrders Error', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);
