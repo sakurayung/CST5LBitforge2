@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DistanceController;
 use App\Http\Controllers\Api\PopulateController;
 use App\Http\Controllers\Api\ItemsController;
-use App\Http\Controllers\api\ReviewsController;
+use App\Http\Controllers\Api\ReviewsController;
 use App\Http\Controllers\Api\TransactionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -117,7 +117,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/user/{id}', [AuthController::class, 'deleteUser']);
     Route::post('/items-create', [ItemsController::class, 'store']);
     Route::put('/items/{id}', [ItemsController::class, 'update']);
-    Route::get('/pending-orders', [PopulateController::class, 'AdminPendingOrders'])->name('api.pending-orders');
+    Route::get('/pending-orders', [PopulateController::class, 'AdminPendingOrders'])->name('Api.pending-orders');
     Route::delete('/items/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
     Route::post('/confirm-order', [TransactionsController::class, 'confirmOrders']);
     Route::put('/items/{id}/stocks', [ItemsController::class, 'updateStocks']);
