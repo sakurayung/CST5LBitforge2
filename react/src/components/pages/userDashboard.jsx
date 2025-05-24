@@ -135,11 +135,6 @@ export default function UserDashboard(){
 
   return (
     <div className={dashboard.dashboard}>
-      <aside>
-        <div><a href="#dashboard-userDetails">User Details</a></div>
-        <div><a href="#dashboard-cartItems">Cart Items</a></div>
-      </aside>
-
       <div className={dashboard.main}>
         <section id="dashboard-userDetails" className={dashboard.sect1}>
           <div className={dashboard.title}>

@@ -6,6 +6,7 @@
     export default function AdminUsersDashboard({
       arr,
       onDelete = () => {},
+      onSuspend = () => {},
       onSortChange = () => {},
       onSearchChange = () => {},
     }) {
@@ -39,7 +40,7 @@
             <div className={usersDashboard.body}>
               <div className={usersDashboard.populateUserswrap}>
                 {arr.map((user, index) => (
-                  <div key={index} className={usersDashboard.userwrap}>
+                  <div key={index} className={!user.is_suspend ? usersDashboard.userwrap1 : usersDashboard.userwrap2}>
                     <div className={usersDashboard.idwrap}>
                       <p># {user.user_id}</p>
                     </div>
@@ -64,6 +65,22 @@
                         <p>{user.email}</p>
                       </div>
                     </div>
+                    {user.role === 'user' && (
+                      <div className={usersDashboard.deletewrap}>
+                        {!user.is_suspend ? (
+                          <button className={usersDashboard.suspendbtn} onClick={(e) => onSuspend(e, user.user_id, user.is_suspend)}>
+                            <p>Suspend</p>
+                          </button>
+                        ):(
+                          <button className={usersDashboard.unsuspendbtn} onClick={(e) => onSuspend(e, user.user_id, user.is_suspend)}>
+                            <p>Unsuspend</p>
+                          </button>
+                        )}
+                        <button className={usersDashboard.deletebtn} onClick={(e) => onDelete(e, user.user_id)}>
+                          <p>Delete</p>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

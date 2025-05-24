@@ -180,6 +180,11 @@ export default function ItemDisplay() {
     };
 
     try {
+      if (user.is_suspend) {
+        alert("you're currently suspended, please wait for the admin to lift the suspension");
+        return
+      }
+
       const response = await axiosClient.post("/rate-item", data);
       console.log("Rating recorded:", response.data);
       // Optional: toast message or update UI
@@ -207,6 +212,11 @@ export default function ItemDisplay() {
     };
 
     try {
+      if (user.is_suspend) {
+        alert("you're currently suspended, please wait for the admin to lift the suspension");
+        return
+      }
+
       const response = await axiosClient.post('/comment-item', data);
       console.log(comment);
       setComment(""); // clear textarea
@@ -232,6 +242,11 @@ export default function ItemDisplay() {
   function handleBuyClick(e) {
     e.preventDefault();
     const amt = Number(amount);
+
+    if (user.is_suspend) {
+      alert("you're currently suspended, please wait for the admin to lift the suspension");
+      return
+    }
     if (isNaN(amt) || amt <= 0 || amt > item.stocks) {
       alert(`Please enter a valid amount between 1 and ${item.stocks}.`);
     } else {
@@ -253,8 +268,6 @@ export default function ItemDisplay() {
 
     try {
       const res = await axiosClient.post('/cart/store', payload);
-
-      alert('Item successfully added to cart!');
       console.log('Cart Response:', res.data);
 
     } catch (error) {

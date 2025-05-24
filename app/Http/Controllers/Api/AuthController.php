@@ -93,6 +93,7 @@ class AuthController extends Controller
                     'region' => $user->region,
                     'postal_code' => $user->postal_code,
                 ],
+                'is_suspend' => $user->isSuspend,
                 'overall_spend' => $user->overall_spend ?? 0,
                 'average_spend' => $user->average_spend ?? 0,
                 'items_ordered' => $user->items_ordered ?? 0,
@@ -305,6 +306,28 @@ class AuthController extends Controller
         return response()->json([
             'message' => "User with ID {$id} has been deleted successfully."
         ], 200);
+    }
+
+    public function suspendUser(Request $request, $id)
+    {
+        $user = DB::table('userstable')->where('id', $id)->first();
+        
+        if (!$user) {
+            return response()->json([
+                'message' => "User with ID {$id} not found."
+            ], 404);
+        }
+
+        $newStatus = !$user->isSuspend;
+
+        DB::table('userstable')->where('id', $id)->update([
+            'isSuspend' => $newStatus,
+        ]);
+
+        return response()->json([
+            'message' => "User suspension status updated successfully.",
+            'new_status' => $newStatus
+        ]);
     }
 
     public function displayAdminDetails(Request $request) 

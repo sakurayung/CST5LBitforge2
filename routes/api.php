@@ -87,7 +87,7 @@ Route::get('/user', function (Request $request) {
             'id' => $user->id,
             'username' => $user->username,
             'email' => $user->email,
-                 'role' => $user->role,
+            'role' => $user->role,
             'phone_number' => $user->phone_number,
             'password' => $user->password,
             'default_address' => [
@@ -96,6 +96,7 @@ Route::get('/user', function (Request $request) {
                 'region' => $user->region,
                 'postal_code' => $user->postal_code,
             ],
+            'is_suspend' => $user->isSuspend,
             'overall_spend' => round($overallSpend ?? 0, 2),
             'average_spend' => round($averageSpend ?? 0, 2),
             'items_ordered' => $itemsOrdered ?? 0,
@@ -127,6 +128,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/comment-item', [ReviewsController::class, 'AddComment']);
     Route::get('/display-admin-details', [AuthController::class, 'displayAdminDetails']);
     Route::put('/cart/{id}/quantity', [TransactionsController::class, 'updateCartQuantity']);
+    Route::patch('/users/{id}/suspend', [AuthController::class, 'suspendUser']);
 });
 
 Route::get('/populate-items', [PopulateController::class, 'populateItems']);

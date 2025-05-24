@@ -36,6 +36,12 @@ export default function OrderPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (user.is_suspend) {
+      alert("you're currently suspended, please wait for the admin to lift the suspension");
+      return
+    }
+
     setIsSubmitting(true);
 
     try {

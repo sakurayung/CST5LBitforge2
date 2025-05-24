@@ -35,7 +35,8 @@ class PopulateController extends Controller
             'street',
             'city',
             'region',
-            'postal_code'
+            'postal_code',
+            'isSuspend'
         );
 
         // Filter by username if provided
@@ -68,6 +69,7 @@ class PopulateController extends Controller
                     'region' => $user->region,
                     'postal_code' => $user->postal_code,
                 ],
+                'is_suspend' => $user->isSuspend,
             ];
         });
 

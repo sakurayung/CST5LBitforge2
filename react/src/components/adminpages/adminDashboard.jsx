@@ -76,7 +76,6 @@ export default function AdminDashboard(){
       if (response.data.success) {
         console.log('Stock updated successfully', response.data);
         // Optional: Update UI state or show success notification
-        alert(`Stock updated to ${stock}`);
         fetchItems(sortItemsBy, searchbyitems, searchItemsKeyword);
       } else {
         throw new Error(response.data.message || 'Update failed');
@@ -106,12 +105,13 @@ export default function AdminDashboard(){
 
     console.log(itemId);
     
-    const confirmDelete = window.confirm("Are you sure you want to delete this item? \n This cannot be undone");
+    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
     if (!confirmDelete) return;
 
     try {
       await axiosClient.delete(`/items/${itemId}`);
       fetchItems(sortItemsBy, searchbyitems, searchItemsKeyword);
+      fetchPendingOrders(sortPendingOrdersBy, searchbypendingorders, searchPendingOrdersKeyword);
       alert("Item deleted successfully!");
     } catch (err) {
       console.error(`Failed to delete item ${itemId}:`, err);
@@ -122,14 +122,33 @@ export default function AdminDashboard(){
   async function handleDeleteUser(e, userId) {
     e.preventDefault();
 
-    const confirmDelete = window.confirm("Are you sure you want to delete this user?");
+    const confirmDelete = window.confirm("Are you sure you want to delete this user instead of suspension?");
     if (!confirmDelete) return;
 
     try {
-      await axiosClient.delete(`/user/${userId}`);
+      const res = await axiosClient.delete(`/user/${userId}`);
       fetchUsers(sortUserBy, searchUsername); // Refresh list after deletion
+      alert(res.data.message);
     } catch (err) {
       console.error(`Failed to delete user ${userId}:`, err);
+    }
+  }
+
+  async function handleSuspendUser(e, userId, isSuspend) {
+    e.preventDefault();
+
+    const confirmSuspend = window.confirm(
+      `Are you sure you want to ${isSuspend ? 'unsuspend' : 'suspend'} this user?`
+    );
+    if (!confirmSuspend) return;
+
+    try {
+      const response = await axiosClient.patch(`/users/${userId}/suspend`);
+      fetchUsers(sortUserBy, searchUsername); // Refresh list after deletion
+      alert(response.data.message);
+    } catch (err) {
+      console.error(`Failed to update user ${userId}:`, err);
+      alert("Something went wrong, please try again.");
     }
   }
 
@@ -241,13 +260,6 @@ export default function AdminDashboard(){
 
   return (
     <div className={dashboard.dashboard}>
-      <aside>
-        <div><a href="#overview">Overview</a></div>
-        <div><Link to={`createitem`}>Add Item</Link></div>
-        <div><a href="#pending-orders">Pending Orders</a></div>
-        <div><a href="#items-overview">Items Overview</a></div>
-        <div><a href="#users-overview">Users Overview</a></div>
-      </aside>
       <div>
         <div className={dashboard.main}>
           <section id="overview" className={dashboard.sect1}>
@@ -305,6 +317,7 @@ export default function AdminDashboard(){
               <AdminUsersDashboard
                 arr={displayUsers}
                 onDelete={handleDeleteUser}
+                onSuspend={handleSuspendUser}
                 onSortChange={handleUserSortChange}
                 onSearchChange={handleUserSearchChange}
               />
