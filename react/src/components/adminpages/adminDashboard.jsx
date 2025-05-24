@@ -111,7 +111,6 @@ export default function AdminDashboard(){
     try {
       await axiosClient.delete(`/items/${itemId}`);
       fetchItems(sortItemsBy, searchbyitems, searchItemsKeyword);
-      fetchPendingOrders(sortPendingOrdersBy, searchbypendingorders, searchPendingOrdersKeyword);
       alert("Item deleted successfully!");
     } catch (err) {
       console.error(`Failed to delete item ${itemId}:`, err);
@@ -260,6 +259,13 @@ export default function AdminDashboard(){
 
   return (
     <div className={dashboard.dashboard}>
+      <aside>
+        <div><a href="#overview">Overview</a></div>
+        <div><Link to={`createitem`}>Add Item</Link></div>
+        <div><a href="#pending-orders">Pending Orders</a></div>
+        <div><a href="#items-overview">Items Overview</a></div>
+        <div><a href="#users-overview">Users Overview</a></div>
+      </aside>
       <div>
         <div className={dashboard.main}>
           <section id="overview" className={dashboard.sect1}>
