@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use illuminate\Support\Facades\Log;
 use App\Models\Item;
 use App\models\PendingOrder;
+
 
 class PopulateController extends Controller
 {
@@ -269,6 +271,11 @@ class PopulateController extends Controller
             ]);
 
         } catch (\Exception $e) {
+            Log::error('AdminPendingOrders Error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to fetch pending orders',

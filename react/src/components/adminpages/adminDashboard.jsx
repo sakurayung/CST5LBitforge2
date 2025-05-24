@@ -218,7 +218,6 @@ export default function AdminDashboard(){
       };
       const res = await axiosClient.get(`/pending-orders`, { params });
       setPendingOrders(res.data.pending_orders); // Assuming this sets state
-      console.log(pendingOrders);
     } catch (err) {
       console.error("Failed to fetch pending orders:", err);
     }
@@ -253,9 +252,6 @@ export default function AdminDashboard(){
     }
   }
   
-  
-
-  console.log(user.purchase_receipts);
 
   return (
     <div className={dashboard.dashboard}>
