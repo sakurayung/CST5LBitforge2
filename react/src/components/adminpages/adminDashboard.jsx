@@ -205,8 +205,8 @@ export default function AdminDashboard(){
         keyword: keyword
       }
 
-      const res = await axiosClient.get(`/pending-orders`, { params });
-      setPendingOrders(res.data);
+      const res = await axiosClient.get(`/display-admin-details`, { params });
+      setPendingOrders(res.data.pending_orders);
       console.log(res.data);
     } catch (err) {
       console.error("Failed to fetch pending orders:", err);

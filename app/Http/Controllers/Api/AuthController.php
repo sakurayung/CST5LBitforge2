@@ -357,26 +357,37 @@ class AuthController extends Controller
 
         $total_pending_orders = DB::table('pending_orders')->count('id');
 
-        $pendingOrders = PendingOrder::with(['item' => function($query) {
-                $query->select('id', 'image_url', 'item_name');
-            }])
-            ->orderBy('ordered_at', 'asc')
-            ->get()
-            ->map(function ($order) {
-                return [
-                    'pending_order_id' => $order->id,
-                    'item_id' => $order->item_id,
-                    'image_url' => $order->item->image_url ?? null,
-                    'fullname' => $order->fullname,
-                    'phone_number' => $order->phone_number,
-                    'amount' => (float)$order->total_amount,
-                    'shipping_fee' => (float)$order->shipping_fee,
-                    'grand_total' => (float)$order->grand_total,
-                    'ordered_at' => $order->ordered_at instanceof \Carbon\Carbon 
-                        ? $order->ordered_at->toDateTimeString() 
-                        : $order->ordered_at,
-                ];
+        $keyword = $request->query('keyword', ''); // default to empty string
+
+        $query = PendingOrder::with(['item' => function($q) {
+            $q->select('id', 'image_url', 'item_name');
+        }])->orderBy('ordered_at', 'asc');
+
+        // Apply search if keyword is present
+        if (!empty($keyword)) {
+            $query->where(function($q) use ($keyword) {
+                $q->where('deliver_to', 'like', "%$keyword%")
+                ->orWhere('fullname', 'like', "%$keyword%")
+                ->orWhere('phone_number', 'like', "%$keyword%");
             });
+        }
+
+        $pendingOrders = $query->get()->map(function ($order) {
+            return [
+                'pending_order_id' => $order->id,
+                'item_id' => $order->item_id,
+                'image_url' => $order->item->image_url ?? null,
+                'fullname' => $order->fullname,
+                'phone_number' => $order->phone_number,
+                'address' => $order->deliver_to,
+                'amount' => (float)$order->total_amount,
+                'shipping_fee' => (float)$order->shipping_fee,
+                'grand_total' => (float)$order->grand_total,
+                'ordered_at' => $order->ordered_at instanceof \Carbon\Carbon 
+                    ? $order->ordered_at->toDateTimeString() 
+                    : $order->ordered_at,
+            ];
+        });
 
         return response()->json([
             'total_items' => $total_items,
@@ -385,6 +396,7 @@ class AuthController extends Controller
             'average_earnings_per_day' => round($average_earnings_perDay, 2),
             'total_users' => $total_users,
             'total_pending_orders' => $total_pending_orders,
+            'pending_orders' => $pendingOrders
         ]);
         
     }

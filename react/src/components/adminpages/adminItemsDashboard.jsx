@@ -22,7 +22,7 @@ export default function AdminItemsDashboard({
       <div className={itemsDashboard.populateItems}>
         <div className={itemsDashboard.header}>
           <div className={itemsDashboard.search}>
-            <input type="text" placeholder='searchItems' 
+            <input type="text"
             onChange={(e) => onSearchChange(e.target.value)}
             />
           </div>
