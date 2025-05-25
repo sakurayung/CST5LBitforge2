@@ -117,7 +117,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/user/{id}', [AuthController::class, 'deleteUser']);
     Route::post('/items-create', [ItemsController::class, 'store']);
     Route::put('/items/{id}', [ItemsController::class, 'update']);
-    Route::get('/pending-orders', [PopulateController::class, 'AdminPendingOrders']);
+    Route::get('/pending-orders', [PopulateController::class, 'pendingOrders']);
     Route::delete('/items/{id}', [ItemsController::class, 'destroy'])->name('items.destroy');
     Route::post('/confirm-order', [TransactionsController::class, 'confirmOrders']);
     Route::put('/items/{id}/stocks', [ItemsController::class, 'updateStocks']);

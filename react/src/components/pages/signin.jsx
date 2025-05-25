@@ -40,7 +40,7 @@ export default function SignIn() {
       .then(({ data }) => {
         setUser(data.user);         // store the new user in context
         setToken(data.token);       // this also writes to localStorage
-        navigate('/');              // redirect to home (or dashboard)
+        window.location.href = "/";            // redirect to home (or dashboard)
       })
       .catch(err => {
         const errorData = err.response?.data;

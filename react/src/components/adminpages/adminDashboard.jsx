@@ -11,15 +11,15 @@ export default function AdminDashboard(){
   const { 
     user, 
     adnminDetails, setAdnminDetails,
+    pendingOrders, setPendingOrders,
     displayItems, setDisplayItems,
     displayUsers, setDisplayUsers } = useGlobalContext();
 
   const [sortUserBy, setSortUserBy] = useState("id");
   const [sortItemsBy, setSortItemsBy] = useState("stocks");
-  const [sortPendingOrdersBy, setSortPendingOrdersBy] = useState("oldest");
 
   const [searchbyitems, setSearchByItems] = useState("id");
-  const [searchbypendingorders, setSearchpendingorders] = useState("id");
+  const [searchbypendingorders, setSearchbypendingorders] = useState("fullname");
 
   const [searchUsername, setSearchUsername] = useState("");
   const [searchItemsKeyword, setSearchItemsKeyword] = useState("");
@@ -168,6 +168,10 @@ export default function AdminDashboard(){
   }, [sortItemsBy, searchbyitems, searchItemsKeyword]);
 
   useEffect(() => {
+    fetchPendingOrders(searchPendingOrdersKeyword);
+  }, [searchPendingOrdersKeyword])
+
+  useEffect(() => {
     fetchAdminDetails()
   }, []);
 
@@ -192,6 +196,20 @@ export default function AdminDashboard(){
       setDisplayUsers(res.data);
     } catch (err) {
       console.error("Failed to fetch users:", err);
+    }
+  }
+
+  async function fetchPendingOrders(keyword) {
+    try {
+      const params = {
+        keyword: keyword
+      }
+
+      const res = await axiosClient.get(`/pending-orders`, { params });
+      setPendingOrders(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.error("Failed to fetch pending orders:", err);
     }
   }
 
@@ -246,8 +264,10 @@ export default function AdminDashboard(){
             </div>
             <div className={dashboard.items}>
               <AdminItemsDashboard 
-              arr={adnminDetails.pending_orders} 
+              arr={pendingOrders} 
               onConfirm={handleCheckItem} 
+              onSearchChange={(val) => setSearchPendingOrdersKeyword(val)}
+              onSearchByChange={(val) => setSearchbypendingorders(val)}
               isPendingOrder />
             </div>
           </section>

@@ -28,15 +28,14 @@ export default function Login() {
       window.location.href = "/";
     } catch (err) {
       console.error(err.response?.data || err);
-      
       alert('Invalid login credentials');
     }
   }
 
-  useEffect(() => {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    if (token) navigate('/');
-  }, []);
+  //useEffect(() => {
+  //  const token = localStorage.getItem('ACCESS_TOKEN');
+  //  if (token) navigate('/');
+  //}, []);
 
 
   return (

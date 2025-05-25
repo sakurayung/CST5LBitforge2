@@ -21,14 +21,13 @@ export default function AdminItemsDashboard({
     <div className={itemsDashboard.populatewrap}>
       <div className={itemsDashboard.populateItems}>
         <div className={itemsDashboard.header}>
+          <div className={itemsDashboard.search}>
+            <input type="text" placeholder='searchItems' 
+            onChange={(e) => onSearchChange(e.target.value)}
+            />
+          </div>
           {isDisplayItems && (
-          <>
-            <div className={itemsDashboard.search}>
-           
-              <input type="text" placeholder='searchItems' 
-              onChange={(e) => onSearchChange(e.target.value)}
-              />
-            </div>
+            <>
             <select name="typesearch" id="" className={itemsDashboard.typesearch}
             onChange={(e) => onSearchByChange(e.target.value)}
             >
@@ -43,8 +42,8 @@ export default function AdminItemsDashboard({
               <option value="price">Price</option>
               <option value="rating">Rating</option>
             </select>
-          </>
-          )} 
+            </>
+          )}
         </div>
         <div className={itemsDashboard.body}>
           <div className={itemsDashboard.populateItemswrap}>
@@ -65,7 +64,8 @@ export default function AdminItemsDashboard({
                   <p className={itemsDashboard.username}>From: <b>{item.fullname}</b></p>
                   <p className={itemsDashboard.username}>Phone #: {item.phone_number}</p>
                   <p className={itemsDashboard.username}>Address: {item.address}</p>
-                  <p className={itemsDashboard.username}>Amount: {item.amount} <br />Shipping fee: PHP{item.shipping_fee} <br />Grand Total: PHP {item.grand_total}</p><br/>
+                  <p className={itemsDashboard.username}>Amount: {item.amount} <br />Shipping fee: PHP{item.shipping_fee} <br />Grand Total: PHP {item.grand_total}</p>
+                  <p className={itemsDashboard.username}>Ordered at: {item.ordered_at}</p>
                   </>
                 )}
               </div>

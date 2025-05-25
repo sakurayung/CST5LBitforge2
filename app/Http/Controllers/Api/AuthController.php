@@ -385,7 +385,6 @@ class AuthController extends Controller
             'average_earnings_per_day' => round($average_earnings_perDay, 2),
             'total_users' => $total_users,
             'total_pending_orders' => $total_pending_orders,
-            'pending_orders' => $pendingOrders
         ]);
         
     }
