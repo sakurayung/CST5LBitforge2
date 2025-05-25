@@ -30,6 +30,14 @@ Route::get('/user', function (Request $request) {
         ->where('user_id', $user->id)
             ->count();
 
+    $cart_items_quantity = DB::table('cart_items')
+        ->where('user_id', $user->id)
+            ->count();
+
+    $items_purchased = DB::table('purchase_receipts')
+        ->where('user_id', $user->id)
+            ->sum('quanitity');
+
     // Cart Items (with JOIN)
     $cartItems = DB::table('cart_items')
         ->join('items', 'items.id', '=', 'cart_items.item_id')
@@ -73,13 +81,7 @@ Route::get('/user', function (Request $request) {
         )
         ->get();
 
-    $cart_items_quantity = DB::table('cart_items')
-        ->where('user_id', $user->id)
-            ->count();
-
-    $pending_items_quantity = DB::table('pending_orders')
-        ->where('user_id', $user->id)
-            ->count();
+    
 
     return response()->json([
         'user' => [
@@ -99,14 +101,13 @@ Route::get('/user', function (Request $request) {
             'is_suspend' => $user->isSuspend,
             'overall_spend' => round($overallSpend ?? 0, 2),
             'average_spend' => round($averageSpend ?? 0, 2),
-            'items_ordered' => $itemsOrdered ?? 0,
-            'cart_items_quantity' => $user->cart_items_quantity ?? 0,
-            'pending_orders_quantity' => $user->pending_orders_quantity ?? 0,
             'cart_items' => $cartItems,
             'purchase_receipts' => $purchaseReceipts,
             'pending_orders' => $pendingOrders,
             'cart_items_quantity' => $cart_items_quantity,
-            'pending_items_quantity' => $pending_items_quantity 
+            'items_ordered' => $itemsOrdered,
+            'items_purchased' => $items_purchased
+
         ]
     ]);
 })->middleware('auth:sanctum');

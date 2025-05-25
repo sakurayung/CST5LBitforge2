@@ -277,9 +277,9 @@ export default function UserDashboard(){
             <div className={dashboard.userDetails2}>
               <div><p>Overall Spend: {user?.overall_spend}</p></div>
               <div><p>Average Spend: {user?.average_spend}</p></div>
-              <div><p>Items Ordered: {user?.item_ordered}</p></div>
+              <div><p>Items Purchased: {user?.items_purchased}</p></div>
               <div><p>Cart Items: {user?.cart_items_quantity}</p></div>
-              <div><p>Pending Items: {user?.pending_orders_quantity}</p></div>
+              <div><p>Pending Items: {user?.items_ordered}</p></div>
             </div>
           </div>
         </section>
