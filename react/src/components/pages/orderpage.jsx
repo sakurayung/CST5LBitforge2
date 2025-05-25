@@ -38,7 +38,7 @@ export default function OrderPage() {
     e.preventDefault();
 
     if (user.is_suspend) {
-      alert("you're currently suspended, please wait for the admin to lift the suspension");
+      alert("You're currently suspended, please wait for the admin to lift your suspension");
       return
     }
 
@@ -87,12 +87,12 @@ export default function OrderPage() {
       const orderResponse = await axiosClient.post('/store-pending-orders', payload);
 
       if (item.cart_id != null || item.cart_id != undefined) {
-        try {
-        const res = await axiosClient.delete(`/cart/${item.cart_id}`);
-        console.log(res.data.message);
-      } catch (error) {
-        console.error("Delete failed:", error);
-      }
+          try {
+          const res = await axiosClient.delete(`/cart/${item.cart_id}`);
+          console.log(res.data.message);
+        } catch (error) {
+          console.error("Delete failed:", error);
+        }
       }
       
       alert("✅ Order placed successfully!");
@@ -104,7 +104,7 @@ export default function OrderPage() {
       
       let errorMessage = "Failed to submit order. Please try again.";
       if (err.response?.data?.message === "Insufficient stock available.") {
-        errorMessage = `Insufficient stock. Only ${err.response.data.available_stock} items available.`;
+        errorMessage = `Insufficient stock.`;
       } else if (err.response?.data?.errors) {
         errorMessage = Object.values(err.response.data.errors).join('\n');
       }

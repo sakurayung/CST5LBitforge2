@@ -181,7 +181,7 @@ export default function ItemDisplay() {
 
     try {
       if (user.is_suspend) {
-        alert("you're currently suspended, please wait for the admin to lift the suspension");
+        alert("You're currently suspended, please wait for the admin to lift your suspension");
         return
       }
 
@@ -213,7 +213,7 @@ export default function ItemDisplay() {
 
     try {
       if (user.is_suspend) {
-        alert("you're currently suspended, please wait for the admin to lift the suspension");
+        alert("You're currently suspended, please wait for the admin to lift your suspension");
         return
       }
 
@@ -244,9 +244,10 @@ export default function ItemDisplay() {
     const amt = Number(amount);
 
     if (user.is_suspend) {
-      alert("you're currently suspended, please wait for the admin to lift the suspension");
+      alert("You're currently suspended, please wait for the admin to lift your suspension");
       return
     }
+
     if (isNaN(amt) || amt <= 0 || amt > item.stocks) {
       alert(`Please enter a valid amount between 1 and ${item.stocks}.`);
     } else {
