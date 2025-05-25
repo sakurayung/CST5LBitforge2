@@ -38,30 +38,6 @@ class AuthController extends Controller
         // Generate token
         $token = $user->createToken('main')->plainTextToken;
 
-        // --- Aggregates ---
-        $overallSpend = DB::table('purchase_receipts')
-            ->where('user_id', $user->id)
-            ->sum('grand_total');
-
-        $averageSpend = DB::table('purchase_receipts')
-            ->selectRaw('DATE(ordered_at) as date, SUM(grand_total) as total')
-            ->where('user_id', $user->id)
-            ->groupBy(DB::raw('DATE(ordered_at)'))
-            ->get()
-            ->avg('total');
-
-        $itemsOrdered = DB::table('pending_orders')
-            ->where('user_id', $user->id)
-                ->count();
-
-        $cart_items_quantity = DB::table('cart_items')
-            ->where('user_id', $user->id)
-                ->count();
-
-        $items_purchased = DB::table('purchase_receipts')
-            ->where('user_id', $user->id)
-                ->sum('quanitity');
-
         // Fetch related data
         $cartItems = DB::table('cart_items')
             ->join('items', 'items.id', '=', 'cart_items.item_id')
@@ -119,14 +95,14 @@ class AuthController extends Controller
                     'postal_code' => $user->postal_code,
                 ],
                 'is_suspend' => $user->isSuspend,
-                'overall_spend' => round($overallSpend ?? 0, 2),
-                'average_spend' => round($averageSpend ?? 0, 2),
+                'overall_spend' => $user->overall_spend ?? 0,
+                'average_spend' => $user->average_spend ?? 0,
+                'items_ordered' => $user->items_ordered ?? 0,
+                'cart_items_quantity' => $user->cart_items_quantity ?? 0,
+                'pending_orders_quantity' => $user->pending_orders_quantity ?? 0,
                 'cart_items' => $cartItems,
                 'purchase_receipts' => $purchaseReceipts,
                 'pending_orders' => $pendingOrders,
-                'cart_items_quantity' => $cart_items_quantity,
-                'items_ordered' => $itemsOrdered,
-                'items_purchased' => $items_purchased
             ],
             'token' => $token,
         ]);
