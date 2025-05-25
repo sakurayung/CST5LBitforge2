@@ -129,6 +129,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/display-admin-details', [AuthController::class, 'displayAdminDetails']);
     Route::put('/cart/{id}/quantity', [TransactionsController::class, 'updateCartQuantity']);
     Route::patch('/users/{id}/suspend', [AuthController::class, 'suspendUser']);
+    Route::get('/user/further-details', [AuthController::class, 'furtherUserDetails']);
 });
 
 Route::get('/populate-items', [PopulateController::class, 'populateItems']);

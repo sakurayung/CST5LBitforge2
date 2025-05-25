@@ -25,6 +25,11 @@ export default function UserDashboard(){
       postal_code: user.default_address?.postal_code || "",
     },
   });
+  const [userDetails, setUserDetails] = useState({
+    cart_items_quantity: 0,
+    pending_items_quantity: 0,
+    item_purchased: 0
+  });
 
   const fileInputRef = useRef(null);
   setAmount(0);
@@ -35,8 +40,23 @@ export default function UserDashboard(){
 
   useEffect(()=>{
     RefreshUserDetails();
+    fetchUserDetails()
   },[]);
   
+
+  async function fetchUserDetails () {
+    try {
+      const res = await axiosClient.get('/user/further-details', {
+        params: {
+          id: user.id
+        }
+      });
+
+      setUserDetails(res.data.user);
+    } catch (error) {
+      console.error('Failed to fetch user details:', error.response?.data || error.message);
+    }
+  }
   
   // 📸 Auto-upload profile picture on file selection
   const handleFileChange = (e) => {
@@ -277,9 +297,9 @@ export default function UserDashboard(){
             <div className={dashboard.userDetails2}>
               <div><p>Overall Spend: {user?.overall_spend}</p></div>
               <div><p>Average Spend: {user?.average_spend}</p></div>
-              <div><p>Items Ordered: {user?.item_ordered}</p></div>
-              <div><p>Cart Items: {user?.cart_items_quantity}</p></div>
-              <div><p>Pending Items: {user?.pending_orders_quantity}</p></div>
+              <div><p>Items Purchased: {userDetails?.items_purchased}</p></div>
+              <div><p>Cart Items: {userDetails?.cart_items_quantity}</p></div>
+              <div><p>Pending Items: {userDetails?.pending_items_quantity}</p></div>
             </div>
           </div>
         </section>

@@ -401,5 +401,44 @@ class AuthController extends Controller
         
     }
 
+
+    public function furtherUserDetails(Request $request)
+    {
+        try {
+            $id = $request->query('id');
+
+            if (!$id) {
+                return response()->json([
+                    'error' => 'User ID is required.'
+                ], 400);
+            }
+
+            $cart_items_quantity = DB::table('cart_items')
+                ->where('user_id', $id)
+                ->count();
+
+            $pending_items_quantity = DB::table('pending_orders')
+                ->where('user_id', $id)
+                ->count();
+
+            $items_purchased = DB::table('purchase_receipts')
+                ->where('user_id', $id)
+                ->sum('quantity');
+
+            return response()->json([
+                'user' => [
+                    'cart_items_quantity' => $cart_items_quantity,
+                    'pending_items_quantity' => $pending_items_quantity,
+                    'items_purchased' => $items_purchased
+                ]
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Something went wrong.',
+                'message' => $e->getMessage() // Optional: for debugging
+            ], 500);
+        }
+    }
     
 }
